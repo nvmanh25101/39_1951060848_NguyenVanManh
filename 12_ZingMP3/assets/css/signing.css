@@ -1,0 +1,71 @@
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+/* Form-sigin */
+.gradient-custom {
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  }
+
+.form__input{
+    background-color: #262626;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.form__label {
+    transform: translate(8px, -35px) scale(1);
+    transition: all 0.2s ease;
+    
+}
+
+.form__input:focus {
+    background-color: #262626;
+    border: 2px solid #dee4eb;
+    color: #fff;
+    outline: none;
+}
+
+.form__input:focus ~ .form__label,
+.form__input.active ~ .form__label {
+    transform: translate(8px, -58px) scale(0.9);
+    background-color: #262626;
+}
+
+.error_input {
+    font-size: 1.4rem;
+    color: red;
+}
+
+.form__input.error {
+    border: 2px solid #ff0000;
+}
+.form__check {
+    display: flex;
+    align-items: center;
+}
+
+.form__check-input {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.error {
+    font-size: 1.8rem;
+    color: rgb(255, 0, 0);
+}
+
+.success {
+    font-size: 1.8rem;
+    color: rgb(46, 241, 7);
+}
