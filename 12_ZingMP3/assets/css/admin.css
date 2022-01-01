@@ -110,6 +110,7 @@ body {
 .header__user {
     margin-right: 20px;
     cursor: pointer;
+    position: relative;
 }
 
 .header__user-img {
@@ -124,6 +125,46 @@ body {
     font-size: 1.6rem;
 }
 
+.header__user:hover .header__signout {
+    display: block;
+}
+
+.header__signout {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: -4px;
+    width: 112px;
+    background-color: #432275;
+    z-index: 1;
+    padding: 6px 0;
+    border-radius: 9px;
+    display: none;
+}
+
+.header__signout a {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.header__signout a:hover {
+    background-color: #563983;
+}
+
+.header__signout::before {
+    position: absolute;
+    content: "";
+    top: -14px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+}
+/* MAIN */
+
+.main__form, 
 .main__container {
     margin-left: var(--navbar-vertical-width);
 }
@@ -162,16 +203,64 @@ body {
     margin: auto;
 }
 
-.user__table,
 .song__table,
 .category__table,
 .employee__table {
     font-size: 1.8rem;
 }
 
-.user__img,
 .song__img,
 .category__img,
 .employee__img {
-    height: 60px;
+    height: 80px;
+}
+
+.song__table a,
+.category__table a,
+.employee__table a {
+    color: var(--text-color);
+    display: block;
+}
+
+.song__table a:hover,
+.category__table a:hover,
+.employee__table a:hover {
+    color: #ffffff;
+}
+
+.form__input,
+.form__select{
+    background-color: #262626;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.form__input:focus {
+    background-color: #262626;
+    border: 2px solid #dee4eb;
+    color: #fff;
+    outline: none;
+}
+
+#level:disabled {
+    background-color: #262626;
+    color: #fff;
+}
+
+.form__btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.8rem;
+}
+
+.error {
+    font-size: 1.8rem;
+    color: rgb(255, 0, 0);
+}
+
+.success {
+    font-size: 1.8rem;
+    color: rgb(46, 241, 7);
 }
