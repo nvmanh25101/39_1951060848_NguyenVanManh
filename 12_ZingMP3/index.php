@@ -1,3 +1,14 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['id'])) {
+        header('location:signin.php');
+        exit();
+}
+
+    require_once './connect.php';
+    $sql = "select * from playlists";
+    $result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,18 +246,19 @@
                     <h5 class="main_text">Lựa chọn hôm nay</h5>
                 </div>
                 <div class="row gx-5 mt-4">
-                    <div class="main_article col-md-3">
-                        <div  class="main_article-img">
-                            <img src="./assets/images/blackpink.jpg" style="width:200px" alt="">
-                            <div class="main_article-icon">
-                               <span class="material-icons-outlined">favorite_border</span>
-                               <span class=" material-icons-outlined">play_circle_outline</span>
-                               <span class="material-icons-outlined">more_horiz</span>
+                    <?php foreach ($result as $each) { ?>
+                        <a class="main_article col-md-3">
+                            <div  class="main_article-img">
+                                <img src="./assets/images/playlists/<?= $each['image'] ?>" style="width:200px" alt="">
+                                <div class="main_article-icon">
+                                <span class="material-icons-outlined">favorite_border</span>
+                                <span class=" material-icons-outlined">play_circle_outline</span>
+                                <span class="material-icons-outlined">more_horiz</span>
+                                </div>
                             </div>
-                        </div>
-                        <a  class="main_article-title" href="">Top hits of 2021</a>
-                        <p class="main_article-topic">Những ca khúc gây sốt tại top hits of 2021 cùng hàng loạt ca sĩ...</p>
-                    </div>
+                            <p  class="main_article-title"><?= $each['name'] ?></p>
+                        </a>
+                    <?php } ?>
                     <div class="main_article col-md-3">
                         <div  class="main_article-img">
                             <img src="./assets/images/noel.png" style="width:200px" alt="">

@@ -1,6 +1,7 @@
 <?php
 
-    require_once '../check_super_admin_signin.php';
+require_once '../check_admin_signin.php';
+
 if(empty($_POST['id'])) {
     $_SESSION['error'] = 'Không có dữ liệu để sửa!';
     header('location:index.php');
@@ -19,7 +20,7 @@ $image_old = $_FILES['image_old'];
 $image_new = $_FILES['image_new'];
 
 if($image_new['size'] > 0) {
-    $folder = '../../assets/images/categories/';
+    $folder = '../../assets/images/playlists/';
     $file_extension = explode('.', $image_new['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
     $file_name = 'category_' . time() . '.' . $file_extension; // tránh trùng ảnh
     $path_file = $folder . $file_name;
@@ -45,7 +46,7 @@ else {
 
 require_once '../../connect.php';
 
-$sql = "update categories
+$sql = "update playlists
 set name = ?,
 image = ?
 where id = '$id'";

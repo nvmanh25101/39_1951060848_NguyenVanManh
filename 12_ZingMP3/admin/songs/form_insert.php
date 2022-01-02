@@ -1,7 +1,7 @@
 <?php 
     require_once '../check_admin_signin.php';
 
-    $page = 'form_insert-song';
+    $page = 'songs';
     require_once '../navbar-vertical.php';
 
     require_once '../../connect.php';
@@ -14,7 +14,8 @@
         
             <div class="row gx-5">
                 <div class="col-12 text-white">
-                    <form action="process_insert.php" method="post">
+
+                    <form action="process_insert.php" method="post" enctype="multipart/form-data">
                         <div class="mb-4 fs-4">
                             <label class="form-label" for="name">Tên</label>
                             <input type="text" name="name" id="name" class="form__input form-control" autocomplete="off"/>
@@ -27,7 +28,7 @@
 
                         <div class="mb-4 fs-4">
                             <label class="form-label" for="audio">Nhạc</label>
-                            <input type="file" name="audio" id="audio" class="form__input form-control"/>
+                            <input type="file" name="audio" id="audio" accept=".mp3" class="form__input form-control"/>
                         </div>
 
                         <div class="mb-4 fs-4">
@@ -53,7 +54,7 @@
                         <input type="hidden" name="admin_id" value="<?= $_SESSION['id']?>">
                         </div>
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4">Thêm</button>
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Sửa</button>
                     </form>
                 </div>
                 
@@ -64,9 +65,5 @@
 </div>
     
 </body>
-<!-- <script>
-    let name = document.getElementById('name').value;
-    let image = document.getElementById('image').value;
-    
-</script> -->
+
 </html>

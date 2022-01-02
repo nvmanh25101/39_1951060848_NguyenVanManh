@@ -4,8 +4,12 @@
     require_once '../navbar-vertical.php';
 
     require_once '../../connect.php';
-    $sql = "select * from songs 
-    order by created_at desc";
+    $sql = "select songs.*, categories.name as category_name, admin.name as admin_name 
+    from songs
+    join categories
+    on categories.id = songs.category_id
+    join admin
+    on admin.id = songs.admin_id";
     $result = mysqli_query($connect, $sql);
 ?>
 
@@ -21,7 +25,6 @@
                             <th scope="col">Tên bài hát</th>
                             <th scope="col">Ảnh</th>
                             <th scope="col">Nhạc</th>
-                            <th scope="col">Lời bài hát</th>
                             <th scope="col">Ca sĩ</th>
                             <th scope="col">Thể loại</th>
                             <th scope="col">Người thêm</th>
@@ -35,69 +38,29 @@
                                     <th scope="row"><?= $each['id'] ?></th>
                                     <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="song__img" src="../../assets/images/<?= $each['image'] ?>" alt="">
+                                        <img class="song__img" src="../../assets/images/songs/<?= $each['image'] ?>" alt="">
                                     </td>
                                     <td>
-                                        <audio src="../../assets/audio/<?= $each['audio'] ?>"></audio>
-                                    </td>
-                                    <td>
-                                        <textarea name="" id=""><?= $each['lyric'] ?></textarea>
+                                        <audio controls class="song__audio">
+                                            <source src="../../assets/audio/<?= $each['audio'] ?>" type="audio/mpeg">
+                                        </audio>
                                     </td>
                                     <td><?= $each['vocalist'] ?></td>
-                                    <td><?= $each['category_id'] ?></td>
-                                    <td><?= $each['admin_id'] ?></td>
+                                    <td><?= $each['category_name'] ?></td>
+                                    <td><?= $each['admin_name'] ?></td>
                                     <td>
-                                        <a href="form_update.php">
+                                        <a href="form_update.php?id=<?= $each['id'] ?>">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete.php">
+                                        <a href="delete.php?id=<?= $each['id'] ?>">
                                         <i class="bi bi-trash-fill"></i>
                                         </a>
                                     </td>
                                 </tr>
                             <?php } ?>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>
-                                    <img class="song__img" src="../../assets/user_img/user.jpg" alt="">
-                                </td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                                <td>@fat</td>
-                                <td>
-                                    <a href="form_update.php">
-                                        <i class="bi bi-pencil-fill"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="delete.php">
-                                    <i class="bi bi-trash-fill"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>
-                                    <img class="song__img" src="./assets/image/user.jpg" alt="">
-                                </td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>
-                                    <a href="form_update.php">
-                                        <i class="bi bi-pencil-fill"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="delete.php">
-                                    <i class="bi bi-trash-fill"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                           
                         </tbody>
                         </table>
                    </div>

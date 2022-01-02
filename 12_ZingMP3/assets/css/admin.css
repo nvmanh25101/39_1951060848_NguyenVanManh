@@ -205,19 +205,22 @@ body {
 
 .song__table,
 .category__table,
-.employee__table {
+.employee__table,
+.playlist__table {
     font-size: 1.8rem;
 }
 
 .song__img,
 .category__img,
-.employee__img {
+.employee__img,
+.playlist__img {
     height: 80px;
 }
 
 .song__table a,
 .category__table a,
-.employee__table a {
+.employee__table a,
+.playlist__table a {
     color: var(--text-color);
     display: block;
 }
@@ -226,6 +229,16 @@ body {
 .category__table a:hover,
 .employee__table a:hover {
     color: #ffffff;
+}
+
+.song__audio {
+    width: 200px;
+    height: 40px;
+}
+
+.song__audio-update {
+    width: 100%;
+    height: 50px;
 }
 
 .form__input,
@@ -264,3 +277,4 @@ body {
     font-size: 1.8rem;
     color: rgb(46, 241, 7);
 }
+

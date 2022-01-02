@@ -1,6 +1,6 @@
 <?php 
     require_once '../check_super_admin_signin.php';
-    $page = 'form_insert-employee';
+    $page = 'employees';
     require_once '../navbar-vertical.php';
 ?>
     <div class="main__form">

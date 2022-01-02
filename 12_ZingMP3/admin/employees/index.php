@@ -1,6 +1,6 @@
 <?php 
     require_once '../check_super_admin_signin.php';
-    $page = 'employees';
+    $page = "employees";
     require_once '../navbar-vertical.php';
 
     require_once '../../connect.php';
@@ -32,7 +32,7 @@
                                     <th scope="row"><?= $each['id'] ?></th>
                                     <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="employee__img" src="../../assets/images/<?= $each['image'] ?>" alt="Avatar">
+                                        <img class="employee__img" src="../../assets/images/admin/<?= $each['image'] ?>" alt="Avatar">
                                     </td>
                                     <td><?= $each['email'] ?></td>
                                     <td><?= $each['gender'] == 1?'Nam':'Nữ' ?></td>

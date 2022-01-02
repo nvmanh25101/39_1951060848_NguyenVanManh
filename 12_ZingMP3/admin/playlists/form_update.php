@@ -1,6 +1,6 @@
 <?php 
     require_once '../check_super_admin_signin.php';
-    $page = 'categories';
+    $page = 'playlist';
     require_once '../navbar-vertical.php';
 
     if(empty($_GET['id'])) {
@@ -10,7 +10,7 @@
 
     $id = $_GET['id'];
     require_once '../../connect.php';
-    $sql = "select * from categories where id = '$id'";
+    $sql = "select * from playlists where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
 ?>
@@ -30,7 +30,7 @@
 
                         <div class="mb-4 fs-4">
                             <label class="form-label">Ảnh cũ</label>
-                            <img src="../../assets/images/categories/<?= $each['image']?>" class="img-thumbnail" alt="">
+                            <img src="../../assets/images/playlists/<?= $each['image']?>" class="img-thumbnail" alt="">
                             <input type="hidden" name="image_old" value="<?= $each['image'] ?>" />
                         </div>
 

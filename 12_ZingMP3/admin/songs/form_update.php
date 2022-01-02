@@ -1,6 +1,6 @@
 <?php 
-    require_once '../check_super_admin_signin.php';
-    $page = 'form_update-category';
+    require_once '../check_admin_signin.php';
+    $page = 'songs';
     require_once '../navbar-vertical.php';
 
     if(empty($_GET['id'])) {
@@ -11,9 +11,12 @@
 
     $id = $_GET['id'];
     require_once '../../connect.php';
-    $sql = "select * from admin where id = '$id'";
+    $sql = "select * from songs where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
+
+    $sql = "select * from categories";
+    $categories = mysqli_query($connect, $sql);
 ?>
     <div class="main__form">
         <div class=" container-fluid px-4">
@@ -21,17 +24,18 @@
           
             <div class="row gx-5">
                 <div class="col-12 text-white">
-                    <form action="process_update.php" method="post" enctype="multipart/form-data">
+
+                     <form action="process_insert.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $each['id'] ?>">
+
                         <div class="mb-4 fs-4">
                             <label class="form-label" for="name">Tên</label>
-                            <input type="text" name="name" id="name" value="<?= $each['name'] ?>" class="form__input form-control" autocomplete="off"/>
-                            <span id="error" class="error_input"></span>
+                            <input type="text" name="name" value="<?= $each['name'] ?>" id="name" class="form__input form-control" autocomplete="off"/>
                         </div>
 
                         <div class="mb-4 fs-4">
                             <label class="form-label">Ảnh cũ</label>
-                            <img src="../../assets/images/<?= $each['image']?>" class="img-thumbnail" alt="">
+                            <img src="../../assets/images/songs/<?= $each['image']?>" class="img-thumbnail" alt="">
                             <input type="hidden" name="image_old" value="<?= $each['image'] ?>" />
                         </div>
 
@@ -41,19 +45,46 @@
                         </div>
 
                         <div class="mb-4 fs-4">
-                            <label class="form-label" for="gender">Giới tính</label>
-                            <input type="text" name="gender" id="gender" value="<?= $each['gender'] == 1?"Nam":"Nữ" ?>" class="form__input form-control" autocomplete="off"/>
-                            <span id="error" class="error_input"></span>
+                            <label class="form-label" for="audio">Nhạc cũ</label>
+                            <input type="hidden" name="audio_old" value="<?= $each['audio'] ?>" id="audio" accept=".mp3" class="form__input form-control"/>
+                            <audio controls class="song__audio-update">
+                                <source src="../../assets/audio/<?= $each['audio'] ?>" type="audio/mpeg">
+                            </audio>
                         </div>
 
                         <div class="mb-4 fs-4">
-                            <label class="form-label" for="phone">Số điện thoại</label>
-                            <input type="text" name="phone" id="phone" value="<?= $each['phone'] ?>" class="form__input form-control" autocomplete="off"/>
-                            <span id="error" class="error_input"></span>
+                            <label class="form-label" for="audio">Đổi nhạc mới</label>
+                            <input type="file" name="audio_new" id="audio" accept=".mp3" class="form__input form-control"/>
                         </div>
-                        
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4" onclick="return validate()">Sửa</button>
+                        <div class="mb-4 fs-4">
+                            <label class="form-label">Lời bài hát</label>
+                            <textarea name="lyric" class="form__input form-control"><?= $each['lyric'] ?></textarea>
+                        </div>
+
+                        <div class="mb-4 fs-4">
+                            <label class="form-label" for="vocalist">Ca sĩ</label>
+                            <input type="text" name="vocalist" value="<?= $each['vocalist'] ?>" id="vocalist" class="form__input form-control"/>
+                        </div>
+
+                        <div class="mb-4 fs-4">
+                            <label class="form-label">Thể loại</label>
+                            <select class="form__select form-select" name="category_id">
+                                <?php foreach ($categories as $category) { ?>
+                                    <option value="<?php echo $each['id'] ?>"
+                                        <?php if($each['category_id'] == $category['id']) { ?>
+                                            selected
+                                        <?php } ?>
+                                    >
+                                        <?php echo $category['name'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+
+                        <input type="hidden" name="admin_id" value="<?= $_SESSION['id']?>">
+                        </div>
+
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Thêm</button>
                     </form>
                 </div>
                 

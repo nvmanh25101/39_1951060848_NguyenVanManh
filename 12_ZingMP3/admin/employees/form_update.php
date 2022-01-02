@@ -1,6 +1,6 @@
 <?php 
     require_once '../check_super_admin_signin.php';
-    $page = 'form_update-category';
+    $page = 'employees';
     require_once '../navbar-vertical.php';
 
     if(empty($_GET['id'])) {
@@ -31,7 +31,7 @@
 
                         <div class="mb-4 fs-4">
                             <label class="form-label">Ảnh cũ</label>
-                            <img src="../../assets/images/<?= $each['image']?>" class="img-thumbnail" alt="">
+                            <img src="../../assets/images/admin/<?= $each['image']?>" class="img-thumbnail" alt="">
                             <input type="hidden" name="image_old" value="<?= $each['image'] ?>" />
                         </div>
 

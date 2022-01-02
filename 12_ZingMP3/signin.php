@@ -1,4 +1,25 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    if(isset($_COOKIE['remember'])) {
+        $token = $_COOKIE['remember'];
+        require_once './connect.php';
+        $sql = "select * from users
+                where token ='$token'";
+        $result = mysqli_query($connect, $sql);
+        $num_rows = mysqli_num_rows($result);
+        if($num_rows == 1) {
+            $each = mysqli_fetch_array($result);
+            $_SESSION['id'] = $each['id'];
+            $_SESSION['name'] = $each['name'];
+            $_SESSION['image'] = $each['image'];
+        }
+    }
+
+    if(isset($_SESSION['id'])) {
+        header('location:index.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,15 +46,15 @@
 
                                 <form action="process_signin.php" method="post">
                                     <div class="text-start">
-                                        <input onchange="input_active()" type="email" name="email" id="email" class="form__input form-control form-control-lg" autocomplete="off"/>
-                                        <span id="error_email" class="error_input"></span>
+                                        <input type="email" name="email" id="email" class="form__input form-control form-control-lg" autocomplete="off"/>
                                         <label class="form__label form-label fs-4" for="email">Email</label>
+                                        <span id="error_email" class="error_input"></span>
                                     </div>
                 
                                     <div class="text-start">
-                                        <input onchange="input_active()" type="password" name="password" id="password" class="form__input form-control form-control-lg" />
-                                        <span id="error_password" class="error_input"></span>
+                                        <input  type="password" name="password" id="password" class="form__input form-control form-control-lg" />
                                         <label class="form__label form-label fs-4" for="password">Mật khẩu</label>
+                                        <span id="error_password" class="error_input"></span>
                                     </div>
 
                                     <div class="form__check mb-4 text-start">
@@ -54,7 +75,9 @@
             </div>
         </div>
     </div>
-</body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="./assets/js/signing.js"></script>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+<script src="./assets/js/signin.js"></script>
+</body>
 </html>

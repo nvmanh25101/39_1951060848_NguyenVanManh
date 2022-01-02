@@ -1,7 +1,7 @@
 <?php
-require_once '../check_super_admin_signin.php';
+require_once '../check_admin_signin.php';
 
-if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || !isset($_POST['gender']) || empty($_POST['phone']) || $_FILES['image']['size'] == 0) {
+if(empty($_POST['name']) || $_FILES['image']['size'] == 0) {
     $_SESSION['error'] = 'Phải điền đầy đủ thông tin'; 
     header('location:form_insert.php');
     exit();
@@ -9,15 +9,7 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) 
 
 
 $name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
 $image = $_FILES['image'];
-$gender = $_POST['gender'];
-$phone = $_POST['phone'];
-$level = $_POST['level'];
-
-
-$folder = '../../assets/images/admin/';
 $file_extension = explode('.', $image['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
 $file_type = array("jpg", "jpeg", "png");
 
@@ -33,20 +25,20 @@ if ($image["size"] > 500000) {
     exit();
 }
 
-$file_name = 'admin_' . time() . '.' . $file_extension; // tránh trùng ảnh
+$folder = '../../assets/images/playlists/';
+$file_name = 'playlist_' . time() . '.' . $file_extension; // tránh trùng ảnh
 $path_file = $folder . $file_name;
 
 move_uploaded_file($image['tmp_name'], $path_file);
 
 require_once '../../connect.php';
 
-$password_hash = password_hash($password, PASSWORD_DEFAULT);
-$sql = "insert into admin(name, email, password, image, gender, phone, level)
-values(?, ?, ?, ?, ?, ?, ?)";
+$sql = "insert into playlists(name, image)
+values(?, ?)";
 
 $stmt = mysqli_prepare($connect, $sql);
 if($stmt) {
-    mysqli_stmt_bind_param($stmt, 'ssssisi', $name, $email, $password_hash, $file_name, $gender, $phone, $level);
+    mysqli_stmt_bind_param($stmt, 'ss', $name, $file_name);
     mysqli_stmt_execute($stmt);
 
     $_SESSION['success'] = 'Đã thêm thành công';
@@ -57,6 +49,8 @@ else {
     exit();
 }
 
+
 mysqli_stmt_close($stmt);
 mysqli_close($connect);
+
 header('location:form_insert.php');

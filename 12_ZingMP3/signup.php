@@ -25,7 +25,7 @@
 
                                 <form action="process_signup.php" method="post" enctype="multipart/form-data">
                                     <div class="text-start">
-                                        <input onchange="input_active()" type="text" id="name" name="name" class="form__input form-control form-control-lg" autocomplete="off"/>
+                                        <input type="text" id="name" name="name" class="form__input form-control form-control-lg" autocomplete="off"/>
                                         <label class="form__label form-label fs-4" for="name">Tên</label>
                                         <span id="error_name" class="error_input"></span>
                                     </div>
@@ -36,13 +36,13 @@
                                     </div>
 
                                     <div class="text-start">
-                                        <input onchange="input_active()" type="email" id="email" name="email" class="form__input form-control form-control-lg" autocomplete="off"/>
+                                        <input  type="email" id="email" name="email" class="form__input form-control form-control-lg" autocomplete="off"/>
                                         <label class="form__label form-label fs-4" for="email">Email</label>
                                         <span id="error_email" class="error_input"></span>
                                     </div>
                 
                                     <div class="text-start">
-                                        <input onchange="input_active()" type="password" id="password" name="password" class="form__input form-control form-control-lg" />
+                                        <input  type="password" id="password" name="password" class="form__input form-control form-control-lg" />
                                         <label class="form__label form-label fs-4" for="password">Mật khẩu</label>
                                         <span id="error_password" class="error_input"></span>
                                     </div>
@@ -61,7 +61,9 @@
             </div>
         </div>
     </div>
-</body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="./assets/js/signing.js"></script>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+<script src="./assets/js/signup.js"></script>
+</body>
 </html>

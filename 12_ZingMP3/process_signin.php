@@ -6,7 +6,7 @@ if(empty($_POST['email']) || empty($_POST['password'])) {
     exit();
 }
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
 if(isset($_POST['remember'])) {
     $remember = true;
@@ -66,4 +66,4 @@ mysqli_stmt_close($stmt);
 
 mysqli_close($connect);
 
-header('location:user.php');
+header('location:signin.php');

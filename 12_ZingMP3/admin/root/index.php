@@ -1,6 +1,6 @@
 <?php 
     require_once '../check_admin_signin.php';
-    $page = 'root';
+    $page = "root";
     require_once '../navbar-vertical.php';
 
     require_once '../../connect.php';
@@ -72,7 +72,9 @@
             </div>
         </div>
     </div>
-</body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="../../assets/js/jquery-3.6.0.min.js"></script>
+<script src="../../assets/js/admin.js"></script>
+</body>
 </html>

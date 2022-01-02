@@ -1,10 +1,10 @@
 <?php
-    require_once '../check_super_admin_signin.php';
-    $page = "categories";
+    require_once '../check_admin_signin.php';
+    $page = "playlists";
     require_once '../navbar-vertical.php';
 
     require_once '../../connect.php';
-    $sql = "select * from categories";
+    $sql = "select * from playlists";
     $result = mysqli_query($connect, $sql);
 ?>
 
@@ -15,11 +15,11 @@
                 
                 <div class="row gx-5">
                     <div class="col-12">
-                        <table class="category__table table table-sm table-dark table-bordered table-hover align-middle">
+                        <table class="playlist__table table table-sm table-dark table-bordered table-hover align-middle">
                             <thead>
                                 <tr>
                                 <th scope="col">Mã</th>
-                                <th scope="col">Tên thể loại</th>
+                                <th scope="col">Tên</th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col">Sửa</th>
                                 <th scope="col">Xóa</th>
@@ -31,7 +31,7 @@
                                     <th scope="row"><?= $each['id'] ?></th>
                                     <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="category__img" src="../../assets/images/categories/<?= $each['image'] ?>" alt="Avatar">
+                                        <img class="playlist__img" src="../../assets/images/playlists/<?= $each['image'] ?>" alt="Avatar">
                                     </td>
                                     <td>
                                         <a href="form_update.php?id=<?= $each['id'] ?>">

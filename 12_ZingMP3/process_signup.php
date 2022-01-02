@@ -25,7 +25,7 @@ if ($image["size"] > 1000000) {
     exit();
 }
 
-$folder = './assets/images/';
+$folder = './assets/images/users/';
 $file_name = 'user_' . time() . '.' . $file_extension; // tránh trùng ảnh
 $path_file = $folder . $file_name;
 
@@ -51,7 +51,9 @@ if($stmt) {
     mysqli_stmt_bind_param($stmt, 'ssss', $name, $file_name, $email, $password_hash);
     mysqli_stmt_execute($stmt);
 
-    $_SESSION['success'] = 'Đăng ký thành công';
+    require './mail.php';
+    sendmail($email, $name);
+    $_SESSION['success'] = 'Vui lòng kiểm tra email';
 }
 else {
     $_SESSION['error'] = 'Không thể chuẩn bị truy vấn!';
@@ -63,4 +65,4 @@ else {
 mysqli_stmt_close($stmt);
 mysqli_close($connect);
 
-header('location:index.php');
+header('location:signup.php');

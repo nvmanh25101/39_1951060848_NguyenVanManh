@@ -25,7 +25,7 @@ if ($image["size"] > 500000) {
     exit();
 }
 
-$folder = '../../assets/images/';
+$folder = '../../assets/images/categories/';
 $file_name = 'category_' . time() . '.' . $file_extension; // tránh trùng ảnh
 $path_file = $folder . $file_name;
 

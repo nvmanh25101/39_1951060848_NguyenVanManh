@@ -14,6 +14,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
             
             <div class="col-12 col-md-8 col-lg-5 col-xl-4">
+
                 <form action="process_signin.php" method="post">
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
@@ -24,13 +25,13 @@
                                 <p class="text-white-50 mb-5 fs-4">Hãy nhập email và mật khẩu của bạn!</p>
                             
                                 <div class="mb-4 text-start">
-                                    <input onchange="input_active()" type="email" name="email" id="email" class="form__input form-control form-control-lg" autocomplete="off"/>
+                                    <input type="email" name="email" id="email" class="form__input form-control form-control-lg" autocomplete="off"/>
                                     <label class="form__label form-label fs-4" for="email">Email</label>
                                     <span id="error_email" class="error_input"></span>
                                 </div>
             
                                 <div class="mb-4 text-start">
-                                    <input onchange="input_active()" type="password" name="password" id="password" class="form__input form-control form-control-lg" />
+                                    <input type="password" name="password" id="password" class="form__input form-control form-control-lg" />
                                     <label class="form__label form-label fs-4" for="password">Mật khẩu</label>
                                     <span id="error_password" class="error_input"></span>
                                 </div>
@@ -47,7 +48,9 @@
             </div>
         </div>
     </div>
-</body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="../assets/js/signing.js"></script>
+<script src="../assets/js/jquery-3.6.0.min.js"></script>
+<script src="../assets/js/signin.js"></script>
+</body>
 </html>

@@ -54,8 +54,14 @@
                 </li>
                 <li class="nav-item navbar__item">
                     <a class="nav-link d-flex align-items-center navbar__link <?= $page == 'songs'?'active':'' ?>" href="../songs">
-                        <i class="navbar__link-icon bi bi-vinyl-fill"></i>
+                        <i class="navbar__link-icon bi bi-vinyl"></i>
                         <span>Bài hát</span> 
+                    </a>
+                </li>
+                <li class="nav-item navbar__item">
+                    <a class="nav-link d-flex align-items-center navbar__link <?= $page == 'playlists'?'active':'' ?>" href="../playlists">
+                        <i class="navbar__link-icon bi bi-music-note-list"></i>
+                        <span>Playlist</span> 
                     </a>
                 </li>
             </ul>
@@ -68,13 +74,10 @@
                     <?= $page == 'employees'?'Nhân viên':'' ?>
                     <?= $page == 'categories'?'Thể loại':'' ?>
                     <?= $page == 'songs'?'Bài hát':'' ?>
-                    <?= $page == 'form_insert-employee'?'Thêm nhân viên':'' ?>
-                    <?= $page == 'form_insert-category'?'Thêm thể loại':'' ?>
-                    <?= $page == 'form_update-category'?'Sửa thể loại':'' ?>
-                    <?= $page == 'form_insert-song'?'Thêm bài hát':'' ?>
+                    <?= $page == 'playlists'?'Playlist':'' ?>
                     </a>
                 <div class="header__user d-flex align-items-center">
-                    <img class="header__user-img" src="../../assets/images/<?= $_SESSION['image'] ?>" alt="avt-user">
+                    <img class="header__user-img" src="../../assets/images/admin/<?= $_SESSION['image'] ?>" alt="avt-user">
                     <span class="header__user-name"><?= $_SESSION['name'] ?></span>
 
                     <div class="header__signout">

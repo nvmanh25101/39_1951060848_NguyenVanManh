@@ -9,7 +9,7 @@ if(empty($_GET['id'])) {
 $id = $_GET['id'];
 
 require_once '../../connect.php';
-$sql = "delete from songs where id = '$id'";
+$sql = "delete from playlists where id = '$id'";
 
 mysqli_query($connect, $sql);
 

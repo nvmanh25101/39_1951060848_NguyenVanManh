@@ -1,6 +1,6 @@
 <?php 
-    require_once '../check_super_admin_signin.php';
-    $page = 'categories';
+    require_once '../check_admin_signin.php';
+    $page = 'playlists';
     require_once '../navbar-vertical.php';
 
 ?>

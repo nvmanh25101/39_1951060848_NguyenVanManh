@@ -22,7 +22,7 @@ $image_old = $_FILES['image_old'];
 $image_new = $_FILES['image_new'];
 
 if($image_new['size'] > 0) {
-    $folder = '../../assets/images/';
+    $folder = '../../assets/images/admin/';
     $file_extension = explode('.', $image_new['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
     $file_name = 'admin_' . time() . '.' . $file_extension; // tránh trùng ảnh
     $path_file = $folder . $file_name;
