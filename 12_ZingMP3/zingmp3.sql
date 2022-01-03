@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 30, 2021 lúc 04:42 PM
--- Phiên bản máy phục vụ: 5.7.33
--- Phiên bản PHP: 7.4.19
+-- Host: localhost:3306
+-- Generation Time: Jan 03, 2022 at 09:11 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `zingmp3`
+-- Database: `zingmp3`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `image`, `gender`, `phone`, `level`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `image`, `gender`, `phon
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -59,7 +59,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `image`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `playlists`
+-- Table structure for table `playlists`
 --
 
 CREATE TABLE `playlists` (
@@ -78,10 +78,18 @@ CREATE TABLE `playlists` (
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `playlists`
+--
+
+INSERT INTO `playlists` (`id`, `name`, `image`) VALUES
+(1, 'Nhạc Trẻ Gây Nghiện', 'playlist_1641117830.jpg'),
+(2, '100% Gây Nghiện', 'playlist_1641197875.jpg');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `playlist_song`
+-- Table structure for table `playlist_song`
 --
 
 CREATE TABLE `playlist_song` (
@@ -90,10 +98,17 @@ CREATE TABLE `playlist_song` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `playlist_song`
+--
+
+INSERT INTO `playlist_song` (`playlist_id`, `song_id`, `created_at`) VALUES
+(2, 1, '2022-01-03 08:54:10');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `saved_songs`
+-- Table structure for table `saved_songs`
 --
 
 CREATE TABLE `saved_songs` (
@@ -105,7 +120,7 @@ CREATE TABLE `saved_songs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `songs`
+-- Table structure for table `songs`
 --
 
 CREATE TABLE `songs` (
@@ -120,10 +135,17 @@ CREATE TABLE `songs` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`id`, `name`, `image`, `audio`, `lyric`, `vocalist`, `category_id`, `admin_id`, `created_at`) VALUES
+(1, 'Past Lives', 'admin_1641111650.jpg', 'song_1641111650.mp3', 'Past lives couldn\'t ever hold me down\r\nLost love is sweeter when it\'s finally found\r\nI\'ve got the strangest feeling\r\nThis isn\'t our first time around\r\nPast lives couldn\'t ever come between us\r\nSome time the dreamers finally wake up\r\nDon\'t wake me I\'m not dreaming\r\nDon\'t wake me I\'m not dreaming', 'SapientDream', 3, 1, '2022-01-02 08:20:50');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -136,52 +158,52 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `image`, `email`, `password`, `token`) VALUES
 (1, 'Mạnh Nguyễn', 'user_1640768030.jpg', 'nvm@gmail.com', '$2y$10$gyvGO/HFfV.GKaVViTf4l.U//IbMaRq6qw9o.vI2QzOqbSUEcmqQe', NULL);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Chỉ mục cho bảng `playlists`
+-- Indexes for table `playlists`
 --
 ALTER TABLE `playlists`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `playlist_song`
+-- Indexes for table `playlist_song`
 --
 ALTER TABLE `playlist_song`
   ADD PRIMARY KEY (`playlist_id`,`song_id`),
   ADD KEY `song_id` (`song_id`);
 
 --
--- Chỉ mục cho bảng `saved_songs`
+-- Indexes for table `saved_songs`
 --
 ALTER TABLE `saved_songs`
   ADD PRIMARY KEY (`song_id`,`user_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `songs`
+-- Indexes for table `songs`
 --
 ALTER TABLE `songs`
   ADD PRIMARY KEY (`id`),
@@ -189,66 +211,66 @@ ALTER TABLE `songs`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `playlists`
+-- AUTO_INCREMENT for table `playlists`
 --
 ALTER TABLE `playlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `songs`
+-- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `playlist_song`
+-- Constraints for table `playlist_song`
 --
 ALTER TABLE `playlist_song`
   ADD CONSTRAINT `playlist_song_ibfk_1` FOREIGN KEY (`playlist_id`) REFERENCES `playlists` (`id`),
   ADD CONSTRAINT `playlist_song_ibfk_2` FOREIGN KEY (`song_id`) REFERENCES `songs` (`id`);
 
 --
--- Các ràng buộc cho bảng `saved_songs`
+-- Constraints for table `saved_songs`
 --
 ALTER TABLE `saved_songs`
   ADD CONSTRAINT `saved_songs_ibfk_1` FOREIGN KEY (`song_id`) REFERENCES `songs` (`id`),
   ADD CONSTRAINT `saved_songs_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Các ràng buộc cho bảng `songs`
+-- Constraints for table `songs`
 --
 ALTER TABLE `songs`
   ADD CONSTRAINT `songs_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`),
