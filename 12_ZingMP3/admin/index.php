@@ -1,3 +1,9 @@
+<?php session_start(); 
+    if(isset($_SESSION['level'])) {
+        header('location:./root');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

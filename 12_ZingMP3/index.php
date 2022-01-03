@@ -256,53 +256,17 @@
                                 <span class="material-icons-outlined">more_horiz</span>
                                 </div>
                             </div>
-                            <p  class="main_article-title"><?= $each['name'] ?></p>
+                            <div  class="main_article-title"><?= $each['name'] ?></div>
                         </a>
                     <?php } ?>
-                    <div class="main_article col-md-3">
-                        <div  class="main_article-img">
-                            <img src="./assets/images/noel.png" style="width:200px" alt="">
-                            <div class="main_article-icon">
-                               <span class="material-icons-outlined">favorite_border</span>
-                               <span class=" material-icons-outlined">play_circle_outline</span>
-                               <span class="material-icons-outlined">more_horiz</span>
-                            </div>
-                        </div>
-                        <a  class="main_article-title" href="">Sôi động cùng BlackPink</a>
-                        <p class="main_article-topic">Những ca khúc gây sốt tại top hits of 2021 cùng hàng loạt ca sĩ...</p> 
-                    </div>
-                    <div class="main_article col-md-3">
-                        <div  class="main_article-img">
-                            <img src="./assets/images/rapviet.jpg" style="width:200px" alt="">
-                            <div class="main_article-icon">
-                               <span class="material-icons-outlined">favorite_border</span>
-                               <span class=" material-icons-outlined">play_circle_outline</span>
-                               <span class="material-icons-outlined">more_horiz</span>
-                            </div>
-                        </div>
-                        <a  class="main_article-title" href="">Rap Việt mới nhất</a>
-                        <p class="main_article-topic">Rtee và những track vừa mới ra mắt của làng Rap</p> 
-                    </div>
-                    <div class="main_article col-md-3">
-                        <div  class="main_article-img">
-                            <img src="./assets/images/usuk-top.jpg" style="width:200px" alt="">
-                            <div class="main_article-icon">
-                               <span class="material-icons-outlined">favorite_border</span>
-                               <span class=" material-icons-outlined">play_circle_outline</span>
-                               <span class="material-icons-outlined">more_horiz</span>
-                            </div>
-                        </div>
-                        <a  class="main_article-title" href="">Giáng sinh rộn ràng</a>
-                        <p class="main_article-topic">Giai điệu pop dễ nghe khuấy động mùa giáng sinh</p> 
-                    </div>
                 </div>
-                <!-- <div class="main_content">
+                <div class="main_content">
                     <h5 class="main_text" style="width: 300px;">Có thể bạn muốn nghe</h5>
                 </div>
                 <div class="row row-cols-4 gx-5 mt-4">
                     <div class="main_article col ">
                         <div  class="main_article-img">
-                            <img src="./img/cothebanmuonnghe/playlist1.jpg" style="width:200px" alt="">
+                            <img src="./assets/images/blackpink.jpg" style="width:200px" alt="">
                             <div class="main_article-icon">
                                <span class="material-icons-outlined">favorite_border</span>
                                <span class=" material-icons-outlined">play_circle_outline</span>
@@ -313,7 +277,7 @@
                     </div>
                     <div class="main_article col ">
                         <div  class="main_article-img">
-                            <img src="./img/cothebanmuonnghe/playlist2.jpg" style="width:200px" alt="">
+                            <img src="./assets/images/rapviet.jpg" style="width:200px" alt="">
                             <div class="main_article-icon">
                                <span class="material-icons-outlined">favorite_border</span>
                                <span class=" material-icons-outlined">play_circle_outline</span>
@@ -324,7 +288,7 @@
                     </div>
                     <div class="main_article col ">
                         <div  class="main_article-img">
-                            <img src="./img/cothebanmuonnghe/playlist3.jpg" style="width:200px" alt="">
+                            <img src="./assets/images/stay.jpeg" style="width:200px" alt="">
                             <div class="main_article-icon">
                                <span class="material-icons-outlined">favorite_border</span>
                                <span class=" material-icons-outlined">play_circle_outline</span>
@@ -335,14 +299,14 @@
                     </div>
                     <div class="main_article col ">
                         <div  class="main_article-img">
-                            <img src="./img/cothebanmuonnghe/playlist4.jpg" style="width:200px" alt="">
+                            <img src="./assets/images/usuk-top.jpg" style="width:200px" alt="">
                             <div class="main_article-icon">
                                <span class="material-icons-outlined">favorite_border</span>
                                <span class=" material-icons-outlined">play_circle_outline</span>
                                <span class="material-icons-outlined">more_horiz</span>
                             </div>
                         </div>
-                        <a  class="main_article-title" href="">Nhạc trẻ gây nghiện</a>
+                        <a  class="main_article-title" href="">Nhạc US-UK gây nghiện</a>
                     </div>
                 </div>
                 <div class="main_content">
@@ -475,7 +439,7 @@
                         </div>
                         <a  class="main_article-title" href="">Top100 nhạc Hàn Quốc hay nhất</a>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!-- Footer-->
             <footer class="container__footer container-fluid px-4 my-5">

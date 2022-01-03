@@ -210,10 +210,10 @@ body {
     font-size: 1.8rem;
 }
 
-.song__img,
+.songs__img,
 .category__img,
 .employee__img,
-.playlist__img {
+.playlists__img {
     height: 80px;
 }
 
@@ -227,16 +227,17 @@ body {
 
 .song__table a:hover,
 .category__table a:hover,
-.employee__table a:hover {
+.employee__table a:hover,
+.playlist__table a:hover {
     color: #ffffff;
 }
 
-.song__audio {
+.songs__audio {
     width: 200px;
     height: 40px;
 }
 
-.song__audio-update {
+.songs__audio-update {
     width: 100%;
     height: 50px;
 }
@@ -278,3 +279,112 @@ body {
     color: rgb(46, 241, 7);
 }
 
+.song__img img,
+.playlist__img img {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.song__name,
+.playlist__name {
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 12px;
+}
+
+.song__media {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.song__media:hover {
+    background-color: #2f2739;
+}
+
+
+.song__media-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.song__media-content {
+    margin-left: 8px;
+    flex: 1;
+}
+
+.song__media-name {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.song__media-vocalist {
+    font-size: 1.2rem;
+    color: #726d79;
+}
+
+.song__add-to-playlist {
+    position: relative;
+}
+
+.song__add-to-playlist:hover .song__add-to-playlist-icon,
+.song__delete-from-playlist-link:hover {
+    color: var(--text-color);
+    background-color: #4c4555;
+}
+
+.song__add-to-playlist-icon,
+.song__delete-from-playlist-link {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    padding: 8px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.song__add-to-playlist:hover .song__playlist {
+    display: block;
+}
+
+.song__playlist {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 228px;
+    background-color: #432275;
+    display: none;
+}
+
+.song__playlist-list {
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+}
+
+.song__playlist-link {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 8px 16px;
+}
+
+.song__playlist-link i {
+    margin-right: 8px;
+}
+
+.song__playlist-link:hover {
+    color: var(--text-color);
+    background-color: #563983;
+}
+
+.song__lyric {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-top: 16px;
+}

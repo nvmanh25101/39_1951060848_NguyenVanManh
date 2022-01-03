@@ -29,9 +29,13 @@
                                 <?php foreach ($result as $each) { ?>
                                 <tr>
                                     <th scope="row"><?= $each['id'] ?></th>
-                                    <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="playlist__img" src="../../assets/images/playlists/<?= $each['image'] ?>" alt="Avatar">
+                                        <a href="show.php?id=<?= $each['id'] ?>" class="text-decoration-none">
+                                            <?= $each['name'] ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <img class="playlists__img" src="../../assets/images/playlists/<?= $each['image'] ?>" alt="Avatar">
                                     </td>
                                     <td>
                                         <a href="form_update.php?id=<?= $each['id'] ?>">

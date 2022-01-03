@@ -352,9 +352,13 @@ body {
     color:white;
     font-weight: 700;
     font-family: Arial;
-    padding-top: 5px;
-    display: flex;
-    cursor: pointer;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
 }
 .main_article-title:hover{
     color:plum;

@@ -36,12 +36,14 @@
                             <?php foreach ($result as $each) { ?>
                                 <tr>
                                     <th scope="row"><?= $each['id'] ?></th>
-                                    <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="song__img" src="../../assets/images/songs/<?= $each['image'] ?>" alt="">
+                                        <a href="show.php?id=<?= $each['id'] ?>" class="text-decoration-none"><?= $each['name'] ?></a>
                                     </td>
                                     <td>
-                                        <audio controls class="song__audio">
+                                        <img class="songs__img" src="../../assets/images/songs/<?= $each['image'] ?>" alt="">
+                                    </td>
+                                    <td>
+                                        <audio controls class="songs__audio">
                                             <source src="../../assets/audio/<?= $each['audio'] ?>" type="audio/mpeg">
                                         </audio>
                                     </td>

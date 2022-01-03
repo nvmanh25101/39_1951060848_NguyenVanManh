@@ -7,7 +7,7 @@ $(document).ready(function() {
         }
         else {
             $.ajax({
-                url: "check_signup.php",
+                url: "check_signin.php",
                 type: "post",
                 data: {email:$(this).val()},
 
