@@ -53,8 +53,8 @@ if($stmt) {
     mysqli_stmt_execute($stmt);
 
     require './mail.php';
-    $url  = "http://" . $_SERVER['HTTP_HOST'];
-    $link = "<a href='$url/12_ZingMP3/email_verification.php?email=$email&token=$token_verification'>Kích hoạt tài khoản</a>";
+    $url  = "http://" . $_SERVER['HTTP_HOST'] . "/39_1951060848_NguyenVanManh/12_ZingMP3";
+    $link = "<a href='$url/email_verification.php?email=$email&token=$token_verification'>Kích hoạt tài khoản</a>";
     sendmail($email, $name, $link);
     $_SESSION['success'] = 'Vui lòng kiểm tra email';
 }

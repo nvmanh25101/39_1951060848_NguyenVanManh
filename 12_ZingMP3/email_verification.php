@@ -42,7 +42,7 @@
         <div class="card-body">
             <p><?php echo $msg; ?></p>
             <?php 
-                $url  = "http://" . $_SERVER['HTTP_HOST'] . "/12_ZingMP3/signin.php";
+                $url  = "http://" . $_SERVER['HTTP_HOST'] . "/39_1951060848_NguyenVanManh/12_ZingMP3/signin.php";
             ?>
             <a href="<?= $url ?>" class="d-block">Vui lòng quay lại đăng nhập</a>
         </div>
