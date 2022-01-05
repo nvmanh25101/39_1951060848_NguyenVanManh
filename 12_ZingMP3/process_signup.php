@@ -39,26 +39,27 @@ $num_rows = mysqli_fetch_array($result)['count(*)'];
 if($num_rows == 1) {
     $_SESSION['error'] = 'Email này đã được đăng ký!';
     header('location:signup.php');
-    exit;
+    exit();
 }
 
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
-$sql = "insert into users(name, image, email, password)
-values(?, ?, ?, ?)";
+$sql = "insert into users(name, image, email, password, token_verification)
+values(?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($connect, $sql);
 if($stmt) {
-    mysqli_stmt_bind_param($stmt, 'ssss', $name, $file_name, $email, $password_hash);
+    $token_verification = uniqid() . time();
+    mysqli_stmt_bind_param($stmt, 'sssss', $name, $file_name, $email, $password_hash, $token_verification);
     mysqli_stmt_execute($stmt);
 
     require './mail.php';
-    sendmail($email, $name);
+    $url  = "http://" . $_SERVER['HTTP_HOST'];
+    $link = "<a href='$url/12_ZingMP3/email_verification.php?email=$email&token=$token_verification'>Kích hoạt tài khoản</a>";
+    sendmail($email, $name, $link);
     $_SESSION['success'] = 'Vui lòng kiểm tra email';
 }
 else {
     $_SESSION['error'] = 'Không thể chuẩn bị truy vấn!';
-    header('location:signup.php');
-    exit();
 }
 
 

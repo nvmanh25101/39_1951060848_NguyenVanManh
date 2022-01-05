@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 03, 2022 at 09:11 AM
+-- Generation Time: Jan 05, 2022 at 02:32 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -154,15 +154,17 @@ CREATE TABLE `users` (
   `image` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT NULL
+  `token` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `token_verification` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `image`, `email`, `password`, `token`) VALUES
-(1, 'Mạnh Nguyễn', 'user_1640768030.jpg', 'nvm@gmail.com', '$2y$10$gyvGO/HFfV.GKaVViTf4l.U//IbMaRq6qw9o.vI2QzOqbSUEcmqQe', NULL);
+INSERT INTO `users` (`id`, `name`, `image`, `email`, `password`, `token`, `status`, `token_verification`) VALUES
+(3, 'Nguyễn Mạnh', 'user_1641313634.jpg', 'nvmanh25101@gmail.com', '$2y$10$lMUBwClnPWiGVG2qpy3ule/fMdwky8LurO3eXbRIn.vv38WHqZm0e', NULL, 1, '61d47562b77791641313634');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +251,7 @@ ALTER TABLE `songs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

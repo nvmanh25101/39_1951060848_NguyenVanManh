@@ -5,11 +5,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
-require 'PHPMailer/Exception.php';
+require './assets/PHPMailer/PHPMailer.php';
+require './assets/PHPMailer/SMTP.php';
+require './assets/PHPMailer/Exception.php';
 
-function sendmail($email, $name) {
+function sendmail($email, $name, $link) {
 //Create an instance; passing `true` enables exceptions
 
     $mail = new PHPMailer(true);
@@ -41,7 +41,7 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Xác thực tài khoản';
-    $mail->Body    = 'Chào mừng bạn đến ZingMP3, vui lòng bấm vào link để <a href="http://localhost/39_1951060848_NguyenVanManh/12_ZingMP3/active_mail.php">Xác thực tài khoản</a>';
+    $mail->Body    = 'Chào mừng bạn đến ZingMP3, vui lòng bấm vào link để ' . $link;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
