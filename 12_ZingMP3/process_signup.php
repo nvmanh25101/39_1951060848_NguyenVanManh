@@ -1,35 +1,39 @@
 <?php
 session_start();
-if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || $_FILES['image']['size'] == 0) {
+if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password'])) {
     $_SESSION['error'] = 'Bạn chưa điền đủ thông tin!';
     header('location:signup.php');
     exit();
+}
+if($_FILES['image']['size'] > 0) {
+    $image = $_FILES['image'];
+    $file_extension = explode('.', $image['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
+    $file_type = array("jpg", "jpeg", "png");
+
+    if(!in_array("$file_extension", $file_type)) {
+        $_SESSION['error'] = 'Chỉ cho phép file dạng .JPG, .PNG, .JPEG'; 
+        header('location:signup.php');
+        exit();
+    }
+
+    if ($image["size"] > 1000000) {
+        $_SESSION['error'] = 'File của bạn quá lớn!'; 
+        header('location:signup.php');
+        exit();
+    }
+
+    $file_name = 'user_' . time() . '.' . $file_extension; // tránh trùng ảnh
+    $folder = './assets/images/users/';
+    $path_file = $folder . $file_name;
+    move_uploaded_file($image['tmp_name'], $path_file);
+}
+else {
+    $file_name = 'no_avatar.png';
 }
 
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-$image = $_FILES['image'];
-$file_extension = explode('.', $image['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
-$file_type = array("jpg", "jpeg", "png");
-
-if(!in_array("$file_extension", $file_type)) {
-    $_SESSION['error'] = 'Chỉ cho phép file dạng .JPG, .PNG, .JPEG'; 
-    header('location:signup.php');
-    exit();
-}
-
-if ($image["size"] > 1000000) {
-    $_SESSION['error'] = 'File của bạn quá lớn!'; 
-    header('location:signup.php');
-    exit();
-}
-
-$folder = './assets/images/users/';
-$file_name = 'user_' . time() . '.' . $file_extension; // tránh trùng ảnh
-$path_file = $folder . $file_name;
-
-move_uploaded_file($image['tmp_name'], $path_file);
 
 require_once './connect.php';
 $sql = "select count(*) from users where email = '$email'";

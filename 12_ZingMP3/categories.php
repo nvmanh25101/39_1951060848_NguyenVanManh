@@ -1,8 +1,9 @@
 <?php 
     session_start();
 
+
     require_once './connect.php';
-    $sql = "select * from playlists";
+    $sql = "select * from categories";
     $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -71,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-item navbar__item">
-                        <a class="nav-link d-flex align-items-center navbar__link" href="./categories.php">
+                        <a class="nav-link d-flex align-items-center navbar__link" href="#">
                             <i class="navbar__link-icon bi bi-slack"></i>
                             <span>Thể Loại</span> 
                         </a>
@@ -262,7 +263,7 @@
                     <?php foreach ($result as $each) { ?>
                         <a class="main_article col-md-3">
                             <div  class="main_article-img">
-                                <img src="./assets/images/playlists/<?= $each['image'] ?>" style="width:200px" alt="">
+                                <img src="./assets/images/categories/<?= $each['image'] ?>" style="width:200px" alt="">
                                 <div class="main_article-icon">
                                 <span class="material-icons-outlined">favorite_border</span>
                                 <span class=" material-icons-outlined">play_circle_outline</span>

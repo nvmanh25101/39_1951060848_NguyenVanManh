@@ -45,8 +45,8 @@
                             <label class="form-label">Thể loại</label>
                             <select class="form__select form-select" name="category_id">
                                 <?php foreach ($result as $each) { ?>
-                                    <option value="<?php echo $each['id'] ?>">
-                                        <?php echo $each['name'] ?>
+                                    <option value="<?= $each['id'] ?>">
+                                        <?= $each['name'] ?>
                                     </option>
                                 <?php } ?>
                             </select>

@@ -59,7 +59,7 @@ if($stmt){
     }
 
 } else{
-    $_SESSION['error'] = 'Không thể chuẩn bị truy vấn!';
+    $_SESSION['error'] = 'Không thể kết nối tới hệ thống!';
 }
  
 // Đóng câu lệnh

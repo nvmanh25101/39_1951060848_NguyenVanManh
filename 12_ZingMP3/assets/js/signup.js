@@ -3,7 +3,10 @@ $(document).ready(function() {
         let regex_email = /^\w{5,30}(@gmail\.com)$/;
         if(!regex_email.test($(this).val())) {
             $("#error_email").text("Email không hợp lệ");
-            // $("#email").addClass("error");
+            $(this).focus();
+            $('.btn-signing').click(function(event) {
+                event.preventDefault();
+            })
         }
         else {
             $.ajax({
@@ -13,23 +16,24 @@ $(document).ready(function() {
 
                 success:function(res) {
                     $("#error_email").text(res);
-                    // $("#email").addClass("error");
+                    $(this).focus();
+                    $('.btn-signing').click(function(event) {
+                        event.preventDefault();
+                    })
                 }
              
             })
-               // else {
-                // $("#error_email").text("");
-                // $("#email").removeClass("error");
-            // }
         } 
-      
-
     })
     
     $("#password").change(function() {
         if($(this).val().length < 8) {
             $("#error_password").text("Mật khẩu ngắn quá. Dễ bị hack đó!");
             $("#password").addClass("error");
+            $(this).focus();
+            $('.btn-signing').click(function(event) {
+                event.preventDefault();
+            })
         }
         else{
             $("#error_password").text("");
@@ -42,6 +46,10 @@ $(document).ready(function() {
         if(!regex_name.test($(this).val())) {
             $("#error_name").text("Tên không hợp lệ");
             $("#name").addClass("error");
+            $(this).focus();
+            $('.btn-signing').click(function(event) {
+                event.preventDefault();
+            })
         }
         else{
             $("#error_name").text("");
@@ -49,9 +57,17 @@ $(document).ready(function() {
         }
     })
 
+    $('.btn-signing').click(function(event) {
+        let is_valid = true;
+        if($('#name').val().length === 0 || $('#email').val().length === 0 || $('#password').val(),length === 0) {
+            is_valid = false;
+        }
+        if(!is_valid) {
+            event.preventDefault();
+        }
+    })
+    
     $(".form__input").change(function() {
             $(this).addClass('active');
     })
-
-
 })

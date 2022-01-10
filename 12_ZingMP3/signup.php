@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://static-zmp3.zadn.vn/skins/zmp3-v5.2/images/icon_zing_mp3_60.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/signing.css">
     <title>Đăng ký</title>
@@ -17,10 +18,10 @@
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
         
-                            <div class="mb-md-4 pb-5">
+                            <div class="pb-5">
 
                                 <h2 class="fw-bold mb-2 text-uppercase">đăng ký</h2>
-                                <p class="text-white-50 mb-5 fs-4">Nhanh chóng và dễ dàng!</p>
+                                <p class="text-white-50 mb-4 fs-4">Nhanh chóng và dễ dàng!</p>
                                 <?php require './admin/error_success.php' ?>
 
                                 <form action="process_signup.php" method="post" enctype="multipart/form-data">
@@ -31,8 +32,11 @@
                                     </div>
 
                                     <div class="mb-4 text-start">
-                                        <label class="form-label fs-4" for="avartar">Ảnh đại diện</label>
-                                        <input type="file" id="avatar" name="image" class="form__input form-control form-control-lg" />
+                                        <label class="form-label fs-4" for="avatar" role="button">
+                                            Ảnh đại diện
+                                            <img id="avatar__img" class="rounded-circle ms-4" src="./assets/images/users/no_avatar.png" alt="Ảnh đại diện" width="80" height="80"/>
+                                        </label>
+                                        <input type="file" hidden id="avatar" name="image" onchange="document.getElementById('avatar__img').src = window.URL.createObjectURL(this.files[0])" class="form__input form-control form-control-lg"/>
                                     </div>
 
                                     <div class="text-start">
@@ -47,7 +51,7 @@
                                         <span id="error_password" class="error_input"></span>
                                     </div>
                 
-                                    <button class="btn btn-outline-light btn-lg px-5 fs-4" type="submit" onclick="return signup_validate()">Đăng ký</button>
+                                    <button class="btn-signing btn btn-outline-light btn-lg px-5 fs-4" type="submit">Đăng ký</button>
                                  </form>
                                 
                             </div>
