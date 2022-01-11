@@ -18,7 +18,7 @@
     <nav class="navbar navbar-vertical d-block position-fixed top-0 start-0 bottom-0 p-0">
         <div class="navbar__content">
             <a class="navbar-brand px-5 d-block" href="#">
-            <svg class="navbar__brand-img" xmlns="http://www.w3.org/2000/svg" width="936" height="266" viewBox="0 0 936 266">
+            <svg class="navbar__brand-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 936 266">
                 <g fill="none" fill-rule="evenodd">
                     <g>
                         <g>
