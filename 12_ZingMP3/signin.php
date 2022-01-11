@@ -62,7 +62,7 @@
                                         <input type="checkbox" id="remember" name="remember" class="form__check-input" />
                                     </div>
                 
-                                    <button class="btn btn-outline-light btn-lg px-5 fs-4" type="submit" onclick="return signin_validate()">Đăng nhập</button>
+                                    <button class="btn-signing btn btn-outline-light btn-lg px-5 fs-4" id="btn-signin" type="submit">Đăng nhập</button>
                                 </form>
                             </div>
                             <div>

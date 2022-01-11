@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 05, 2022 at 02:32 AM
+-- Generation Time: Jan 10, 2022 at 09:21 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -44,7 +44,16 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `image`, `gender`, `phone`, `level`) VALUES
 (1, 'admin', 'admin@gmail.com', '$2y$10$HlolXs97T2oBvYt2WWlZP.r/ieGfzuZZY9yepzcI4eVA5.KecEKjO', 'admin.jpg', 1, '0123456789', 1),
-(3, 'Đỗ Phương', 'phuongnn@gmail.com', '$2y$10$.yy.pj/HN5dFnmrd6AvqcOV6Ki5Zu6vYVGx2DMXA1O4NYdGVjbSYS', 'admin_1640796988.jpg', 0, '0244142142', 0);
+(3, 'Đỗ Phương', 'phuongnn@gmail.com', '$2y$10$.yy.pj/HN5dFnmrd6AvqcOV6Ki5Zu6vYVGx2DMXA1O4NYdGVjbSYS', 'admin_1640796988.jpg', 0, '0244142142', 0),
+(4, 'Nguyễn Hải Quân', 'nguyenhaiquan@gmail.com', '$2y$10$ZZWt9.w0J3d2k.ccNa10eO0qJKELXkGCNWX9w0tOPUtUIuIJsmH1G', 'admin_1641803527.jpg', 1, '0978978992', 0),
+(5, 'Nguyễn Thùy Ninh', 'nguyenthuyninh@gmail.com', '$2y$10$7lI2y8jLaDqe61U89bESDuicMDgmMwHCysMQzOvwybplizOhjrgvy', 'admin_1641803603.jpg', 0, '0128397127', 0),
+(6, 'Vũ Thị Nụ', 'vuthinu@gmail.com', '$2y$10$qn6lD.zDA0mbIsnw86bytO31uo/Zhp9rv8DFV0uxNSz3ND4MZwAHC', 'admin_1641803711.jpg', 0, '0274891212', 0),
+(7, 'Trần Huy Nam', 'tranhuynam@gmail.com', '$2y$10$5q3gomhwKkUt52TY6wUPDOcZuV0Z8AsplW2.kF9uwllN9v4erEqC2', 'admin_1641805085.jpg', 1, '0758637213', 0),
+(8, 'Phạm Văn Phú', 'phamvanphu@gmail.com', '$2y$10$MjXaLFomgidam78VoZ8bludBg/k0Z3TAhtAyW725PzOXCDHn1el4m', 'admin_1641805558.jpg', 1, '0224124241', 0),
+(9, 'Mai Tiến Đạt', 'maitiendat@gmail.com', '$2y$10$ShSOIJNB8imOUCn5Ve1Th.s8kDxo0qtpU6NlDkQa4w9tJs4ttJC6S', 'admin_1641805602.jpg', 1, '0899472141', 0),
+(10, 'Đỗ Phi Long', 'dophilong@gmail.com', '$2y$10$1pX1CnI7nSTRjJRltdf58OOhZDilurbMUXnUOnJtl.oGaw5i6aiRq', 'admin_1641805893.jpg', 1, '0909783211', 0),
+(11, 'Lê Thị Hồng Ngần', 'lethihongan@gmail.com', '$2y$10$RN9G8MxkETUaoQinD9M6C.C1hVLidd8g2colx54Bq1nT7oH9lJqkC', 'admin_1641805940.jpg', 0, '0785894032', 0),
+(12, 'Trần Duy Ngọc', 'tranduyngoc@gmail.com', '$2y$10$0mIHFnadDw6LfWpnMhEsyuiJ/xUrGNQ9E7WIE2FWJjg.pCkINp88G', 'admin_1641806047.jpg', 1, '0858927414', 0);
 
 -- --------------------------------------------------------
 
@@ -227,7 +236,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `categories`

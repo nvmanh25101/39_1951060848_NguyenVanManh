@@ -274,12 +274,59 @@ body {
     margin-left: 7px;
     margin-top: 8px;
 }
-.header__avatar{
+
+.header__avatar i{
     font-size: 40px;
     margin-bottom: 2px;
     margin-left: 5px;
     cursor: pointer;
+    position: relative;
 }
+
+.header__avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header__avatar:hover .header__avatar-menu {
+    display: block;
+}
+
+.header__avatar-menu::before {
+    content: "";
+    width: 54%;
+    height: 40px;
+    position: absolute;
+    top: -32px;
+    right: -4px;
+}
+
+.header__avatar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 14px;
+    padding: 8px 0;
+    width: 140px;
+    background-color: #432275;
+    list-style: none;
+    border-radius: 5px;
+}
+
+.header__avatar-link {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 8px;
+    text-decoration: none;
+}
+
+.header__avatar-link:hover {
+    color: var(--text-color);
+    background-color: #563983;
+}
+
 .header_right{
     margin-right: 20px;
 }

@@ -8,7 +8,7 @@ if(empty($_POST['email']) || empty($_POST['password'])) {
     exit();
 }
 
-$email = $_POST['email'];
+$email = htmlspecialchars($_POST['email'], ENT_QUOTES);
 $password = htmlspecialchars($_POST['password'], ENT_QUOTES); //chuyển '' và ""
 
 require_once '../connect.php';

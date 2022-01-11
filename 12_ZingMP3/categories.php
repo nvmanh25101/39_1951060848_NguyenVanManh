@@ -1,8 +1,9 @@
 <?php 
     session_start();
 
+
     require_once './connect.php';
-    $sql = "select * from playlists";
+    $sql = "select * from categories";
     $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -71,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-item navbar__item">
-                        <a class="nav-link d-flex align-items-center navbar__link" href="./categories.php">
+                        <a class="nav-link d-flex align-items-center navbar__link" href="#">
                             <i class="navbar__link-icon bi bi-slack"></i>
                             <span>Thể Loại</span> 
                         </a>
@@ -234,10 +235,10 @@
                         <?php if(isset($_SESSION['id'])) { ?>
                             <img src="./assets/images/users/<?php echo $_SESSION['image']?>" class="header__avatar-img" alt="avatar">
                             <ul class="header__avatar-menu">
-                                <li>
-                                    <a href="./signout.php" class="header__avatar-link">Đăng xuất</a>
-                                </li>
-                            </ul>
+                            <li>
+                               <a href="./signout.php" class="header__avatar-link">Đăng xuất</a>
+                            </li>
+                        </ul>
                         <?php } else {?>
                             <i class="bi bi-person-circle" style="color: #cdd6da;"></i>
                             <ul class="header__avatar-menu">
@@ -262,7 +263,7 @@
                     <?php foreach ($result as $each) { ?>
                         <a class="main_article col-md-3">
                             <div  class="main_article-img">
-                                <img src="./assets/images/playlists/<?= $each['image'] ?>" style="width:200px" alt="">
+                                <img src="./assets/images/categories/<?= $each['image'] ?>" style="width:200px" alt="">
                                 <div class="main_article-icon">
                                 <span class="material-icons-outlined">favorite_border</span>
                                 <span class=" material-icons-outlined">play_circle_outline</span>
@@ -511,8 +512,8 @@
         </div>   
         
     </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
 

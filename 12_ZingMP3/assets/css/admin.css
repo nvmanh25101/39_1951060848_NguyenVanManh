@@ -30,20 +30,13 @@ body {
    
   /* Handle   */
 ::-webkit-scrollbar-thumb {
-    background: rgba(177, 177, 177, 1);
+    background: transparent;
     border-radius: 10px;
-    /* opacity: 0;
-    visibility: hidden; */
-    /* transition: all 0.5s ease-in 5s; */
-    display: none
   }
   
   /* Handle on hover   */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(177, 177, 177, 0.6); 
-    /* opacity: 1;
-    visibility: visible; */
-    display: unset;
+    background: rgba(177, 177, 177, 0.6);
 }
 
 .navbar-vertical {
@@ -167,6 +160,7 @@ body {
 .main__form, 
 .main__container {
     margin-left: var(--navbar-vertical-width);
+    min-height: 80vh;
 }
 
 .card {
@@ -230,6 +224,20 @@ body {
 .employee__table a:hover,
 .playlist__table a:hover {
     color: #ffffff;
+}
+
+.form__search {
+    outline: none;
+    border: none;
+    background-color: #2f2739;
+    color: #ffff;
+    padding: 8px;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.form__search:focus {
+ background-color: #432275;
 }
 
 .songs__audio {
@@ -387,4 +395,24 @@ body {
     font-size: 1.6rem;
     color: var(--text-color);
     margin-top: 16px;
+}
+
+.pagination-item__link {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #432275;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.pagination-item__link:hover {
+    color: var(--text-color);
+    background-color: #432275;
+}
+
+.pagination-item--active .pagination-item__link {
+    background-color: #432275;
 }
