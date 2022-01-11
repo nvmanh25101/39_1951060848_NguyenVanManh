@@ -405,9 +405,14 @@ body {
     font-size: 1.6rem;
     color: var(--text-color);
     text-decoration: none;
+    margin: 0 4px;
 }
 
 .pagination-item__link:hover {
     color: var(--text-color);
+    background-color: #432275;
+}
+
+.pagination-item--active .pagination-item__link {
     background-color: #432275;
 }

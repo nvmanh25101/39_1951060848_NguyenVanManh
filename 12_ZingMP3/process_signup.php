@@ -56,8 +56,8 @@ if($stmt) {
     mysqli_stmt_bind_param($stmt, 'sssss', $name, $file_name, $email, $password_hash, $token_verification);
     mysqli_stmt_execute($stmt);
 
-    require './mail.php';
-    $url  = "http://" . $_SERVER['HTTP_HOST'] . "/39_1951060848_NguyenVanManh/12_ZingMP3";
+    require './mail/mail.php';
+    $url  = "http://" . $_SERVER['HTTP_HOST'] . "/39_1951060848_NguyenVanManh/12_ZingMP3/mail";
     $link = "<a href='$url/email_verification.php?email=$email&token=$token_verification'>Kích hoạt tài khoản</a>";
     sendmail($email, $name, $link);
     $_SESSION['success'] = 'Vui lòng kiểm tra email';
