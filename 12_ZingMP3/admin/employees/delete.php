@@ -8,7 +8,7 @@ if(empty($_GET['id'])) {
 
 $id = $_GET['id'];
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 $sql = "delete from admin where id = '$id'";
 
 mysqli_query($connect, $sql);

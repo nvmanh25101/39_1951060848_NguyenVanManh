@@ -10,7 +10,8 @@
     }
 
     $id = $_GET['id'];
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
+
     $sql = "select * from songs where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
@@ -84,7 +85,7 @@
                         <input type="hidden" name="admin_id" value="<?= $_SESSION['id']?>">
                         </div>
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4">Thêm</button>
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Sửa</button>
                     </form>
                 </div>
                 

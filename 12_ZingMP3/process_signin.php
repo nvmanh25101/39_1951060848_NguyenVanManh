@@ -14,7 +14,7 @@ if(isset($_POST['remember'])) {
     $remember = false;
 }
 
-require_once './connect.php';
+require_once './database/connect.php';
 $sql = "select * from users
 where email = ?";
 

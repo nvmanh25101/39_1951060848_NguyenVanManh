@@ -1,7 +1,7 @@
 $(document).ready(function() {
     let is_valid = true;
 
-    $("#email").change(function() {
+    $("#email").keyup(function() {
         let regex_email = /^\w{5,30}(@gmail\.com)$/;
         if(!regex_email.test($(this).val())) {
             $("#error_email").text("Email không hợp lệ");
@@ -23,7 +23,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#password').change(function() {
+    $('#password').keyup(function() {
         if($(this).val().length > 0) {
             $('#error_password').text('');
             is_valid = true;

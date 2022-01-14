@@ -3,7 +3,7 @@
     $page = "playlists";
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
 
     $page = 1;
     if(isset($_GET['page'])) {

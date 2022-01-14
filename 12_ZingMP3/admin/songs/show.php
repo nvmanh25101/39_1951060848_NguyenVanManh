@@ -3,7 +3,8 @@
     $page = 'songs';
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
+
     $id = $_GET['id'];
     $sql = "select *
     from songs
@@ -47,10 +48,12 @@
                                     <ul class="song__playlist-list">
                                         <?php foreach ($playlists as $playlist) { ?>
                                             <li class="song__playlist-item">
-                                                <a href="add_to_playlist.php?id=<?= $id ?>&playlist_id=<?= $playlist['id'] ?>" class="song__playlist-link">
+                                                <button class="song__playlist-btn"
+                                                    data-id='<?= $id ?>' data-playlist='<?= $playlist['id'] ?>'
+                                                >
                                                     <i class="bi bi-music-note-list"></i>
                                                     <?= $playlist['name'] ?>
-                                                </a>
+                                                </button>
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -63,10 +66,40 @@
                         </div>
                    </div>
                 </div>
+                <?php include '../../template/toast.php' ?>
             </div>
         </div>
     </div>
-</body>
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $(".song__playlist-btn").click(function() {
+            let id = $(this).data('id');
+            let playlist = $(this).data('playlist');
+            $.ajax({
+                url: 'add_to_playlist.php',
+                type: 'POST',
+                data: {id, playlist},
+            })
+    
+            .done(function(res) {
+            if (res == 1) {
+                $(".toast-body").text('Thêm thành công');
+            } else {
+                $(".toast-body").text(res);
+            }
+            })
+          })
+          $(".song__playlist-btn").click(function() {
+              var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+              var toastList = toastElList.map(function(toastEl) {
+                  return new bootstrap.Toast(toastEl)
+              })
+              toastList.forEach(toast => toast.show())
+          })
+        })
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </script>
+</body>
 </html>

@@ -44,7 +44,7 @@ else {
     $file_name = $image_old;
 }
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 
 $sql = "update playlists
 set name = ?,

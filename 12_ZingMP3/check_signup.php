@@ -2,7 +2,7 @@
 
 if(isset($_POST['email'])) {
     $email = $_POST['email'];
-    require_once './connect.php';
+    require_once './database/connect.php';
     
     $sql = "select * from users
     where email= '$email'";

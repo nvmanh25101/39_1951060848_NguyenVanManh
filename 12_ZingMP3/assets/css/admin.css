@@ -205,7 +205,7 @@ body {
 }
 
 .songs__img,
-.category__img,
+.categories__img,
 .employee__img,
 .playlists__img {
     height: 80px;
@@ -237,7 +237,7 @@ body {
 }
 
 .form__search:focus {
- background-color: #432275;
+    background-color: #432275;
 }
 
 .songs__audio {
@@ -288,14 +288,16 @@ body {
 }
 
 .song__img img,
-.playlist__img img {
+.playlist__img img,
+.category__img img {
     width: 300px;
     height: 300px;
     border-radius: 5px;
 }
 
 .song__name,
-.playlist__name {
+.playlist__name,
+.category__name {
     color: var(--text-color);
     text-align: center;
     margin-top: 12px;
@@ -340,19 +342,25 @@ body {
 }
 
 .song__add-to-playlist:hover .song__add-to-playlist-icon,
-.song__delete-from-playlist-link:hover {
+.song__delete-from-playlist-btn:hover {
     color: var(--text-color);
     background-color: #4c4555;
 }
 
 .song__add-to-playlist-icon,
-.song__delete-from-playlist-link {
+.song__delete-from-playlist-btn {
     color: var(--text-color);
     font-size: 1.4rem;
     padding: 8px 4px;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+}
+
+.song__delete-from-playlist-btn {
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
 
 .song__add-to-playlist:hover .song__playlist {
@@ -374,20 +382,23 @@ body {
     list-style: none;
 }
 
-.song__playlist-link {
+.song__playlist-btn {
     font-size: 1.4rem;
     color: var(--text-color);
     text-decoration: none;
-    display: block;
+    width: 100%;
     padding: 8px 16px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    text-align: left;
 }
 
-.song__playlist-link i {
+.song__playlist-btn i {
     margin-right: 8px;
 }
 
-.song__playlist-link:hover {
-    color: var(--text-color);
+.song__playlist-btn:hover {
     background-color: #563983;
 }
 
@@ -415,4 +426,16 @@ body {
 
 .pagination-item--active .pagination-item__link {
     background-color: #432275;
+}
+
+.message {
+    position: fixed;
+    left: 0;
+    bottom: 50px;
+}
+
+.message div {
+    background-color: #432275;
+    font-size: 1.4rem;
+    color: #fff;
 }

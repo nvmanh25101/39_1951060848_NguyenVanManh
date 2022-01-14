@@ -31,7 +31,7 @@ $path_file = $folder . $file_name;
 
 move_uploaded_file($image['tmp_name'], $path_file);
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 
 $sql = "insert into categories(name, image)
 values(?, ?)";

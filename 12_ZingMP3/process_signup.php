@@ -35,7 +35,7 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-require_once './connect.php';
+require_once './database/connect.php';
 $sql = "select count(*) from users where email = '$email'";
 $result = mysqli_query($connect, $sql);
 $num_rows = mysqli_fetch_array($result)['count(*)'];

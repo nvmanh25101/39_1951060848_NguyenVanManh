@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="main">
-    <nav class="navbar navbar-vertical d-block position-fixed top-0 start-0 bottom-0 p-0">
+    <nav class="navbar navbar-vertical d-block position-fixed top-0 start-0 bottom-0 p-0 navbar-collapse">
         <div class="navbar__content">
             <a class="navbar-brand px-5 d-block" href="#">
             <svg class="navbar__brand-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 936 266">

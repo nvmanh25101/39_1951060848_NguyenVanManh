@@ -3,7 +3,7 @@
     $page = "categories";
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
 
     $page = 1;
     if(isset($_GET['page'])) {
@@ -58,9 +58,13 @@
                                 <?php foreach ($result as $each) { ?>
                                 <tr>
                                     <th scope="row"><?= $each['id'] ?></th>
-                                    <td><?= $each['name'] ?></td>
                                     <td>
-                                        <img class="category__img" src="../../assets/images/categories/<?= $each['image'] ?>" alt="Avatar">
+                                        <a href="./show.php?id=<?= $each['id'] ?>" class="text-decoration-none">
+                                        <?= $each['name'] ?>
+                                    </a>
+                                    </td>
+                                    <td>
+                                        <img class="categories__img" src="../../assets/images/categories/<?= $each['image'] ?>" alt="Avatar">
                                     </td>
                                     <td>
                                         <a href="form_update.php?id=<?= $each['id'] ?>">

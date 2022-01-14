@@ -38,7 +38,7 @@ $path_file = $folder . $file_name;
 
 move_uploaded_file($image['tmp_name'], $path_file);
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 $sql = "insert into admin(name, email, password, image, gender, phone, level)

@@ -4,7 +4,8 @@
     $page = 'songs';
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
+
     $sql = "select * from categories";
     $result = mysqli_query($connect, $sql);
 ?>
@@ -54,7 +55,7 @@
                         <input type="hidden" name="admin_id" value="<?= $_SESSION['id']?>">
                         </div>
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4">Sửa</button>
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Thêm</button>
                     </form>
                 </div>
                 

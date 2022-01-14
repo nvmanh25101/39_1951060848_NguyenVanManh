@@ -49,7 +49,7 @@ else {
     $file_audio_name = $audio_old;
 }
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 
 $sql = "update songs
 set name = ?,

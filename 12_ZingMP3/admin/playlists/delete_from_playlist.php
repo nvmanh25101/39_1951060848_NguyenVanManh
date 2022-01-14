@@ -1,27 +1,24 @@
 <?php
 
-session_start();
-$playlist_id = $_GET['id'];
-if(empty($_GET['song_id'])) {
-    header("location:show.php?id=$playlist_id");
-    exit();
+try {
+    if(empty($_POST['id']) || empty($_POST['song'])) {
+        throw new Exception("Đã xảy ra lỗi, vui lòng thử lại sau!");
+    }
+    $playlist_id = $_POST['id'];
+    $song_id = $_POST['song'];
+
+    require_once '../../database/connect.php';
+
+    $sql = "delete from playlist_song
+    where playlist_id = '$playlist_id' and song_id = '$song_id'";
+
+    mysqli_query($connect, $sql);
+    if(mysqli_error($connect)) {
+        throw new Exception("Đã xảy ra lỗi, vui lòng thử lại sau!");
+    }
+    mysqli_close($connect);
+    echo 1;
 }
-
-$song_id = $_GET['song_id'];
-
-
-require_once '../../connect.php';
-
-$sql = "delete from playlist_song
-where playlist_id = '$playlist_id' and song_id = '$song_id'";
-
-if(mysqli_query($connect, $sql)) {
-    $_SESSION['success'] = "Đã xóa thành công";
+catch (Throwable $e) {
+    echo $e->getMessage();
 }
-else {
-    $_SESSION['error'] = "Đã gặp lỗi, vui lòng thử lại";
-}
-
-mysqli_close($connect);
-
-header('location:show.php');

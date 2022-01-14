@@ -1,26 +1,24 @@
 <?php
 
-session_start();
-$song_id = $_GET['id'];
-if(empty($_GET['playlist_id'])) {
-    header("location:show.php?id=$song_id");
-    exit();
+try {
+    if(empty($_POST['id']) || empty($_POST['playlist'])) {
+        throw new Exception("Đã xảy ra lỗi, vui lòng thử lại sau!");
+    }
+    $song_id = $_POST['id'];
+    $playlist_id = $_POST['playlist'];
+
+    require_once '../../database/connect.php';
+
+    $sql = "insert into playlist_song(playlist_id, song_id)
+    values('$playlist_id', '$song_id')";
+
+    mysqli_query($connect, $sql);
+    if(mysqli_error($connect)) {
+        throw new Exception("Đã xảy ra lỗi, vui lòng thử lại sau!");
+    }
+    mysqli_close($connect);
+    echo 1;
 }
-
-$playlist_id = $_GET['playlist_id'];
-
-require_once '../../connect.php';
-
-$sql = "insert into playlist_song(playlist_id, song_id)
-values('$playlist_id', '$song_id')";
-
-if(mysqli_query($connect, $sql)) {
-    $_SESSION['success'] = "Đã thêm thành công";
+catch (Throwable $e) {
+    echo $e->getMessage();
 }
-else {
-    $_SESSION['error'] = "Đã gặp lỗi, vui lòng thử lại";
-}
-
-mysqli_close($connect);
-
-header('location:show.php');

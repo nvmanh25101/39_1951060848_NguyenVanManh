@@ -3,7 +3,8 @@
     $page = "root";
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
+
     $sql = "select count(*) from admin where level = '0'";
     $admin = mysqli_query($connect, $sql);
     $admin_quantity = mysqli_fetch_array($admin)['count(*)'];

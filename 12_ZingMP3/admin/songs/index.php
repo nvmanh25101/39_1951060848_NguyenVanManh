@@ -3,7 +3,7 @@
     $page = 'songs';
     require_once '../navbar-vertical.php';
 
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
 
     $page = 1;
     if(isset($_GET['page'])) {
@@ -21,7 +21,7 @@
     $result_num_song = mysqli_fetch_array($arr_num_song);
     $num_song = $result_num_song['count(*)'];
 
-    $num_song_per_page = 10;
+    $num_song_per_page = 5;
 
     $num_page = ceil($num_song / $num_song_per_page);
     $skip_page = $num_song_per_page * ($page - 1);

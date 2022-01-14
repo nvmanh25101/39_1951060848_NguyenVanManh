@@ -10,7 +10,7 @@
     }
 
     $id = $_GET['id'];
-    require_once '../../connect.php';
+    require_once '../../database/connect.php';
     $sql = "select * from admin where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);

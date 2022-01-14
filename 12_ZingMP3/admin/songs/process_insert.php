@@ -18,7 +18,7 @@ $admin_id = $_POST['admin_id'];
 // Ảnh
 $folder = '../../assets/images/songs/';
 $file_extension = explode('.', $image['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
-$file_type = array("jpg", "jpeg", "png", "mp3");
+$file_type = array("jpg", "jpeg", "png");
 
 if ($image["size"] > 500000) {
     $_SESSION['error'] = 'File của bạn quá lớn!'; 
@@ -42,7 +42,7 @@ move_uploaded_file($image['tmp_name'], $path_file);
 $folder_audio = '../../assets/audio/';
 $file_audio_extension = explode('.', $audio['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
 
-if(!in_array("$file_audio_extension", $file_type)) {
+if($file_audio_extension !== 'mp3') {
     $_SESSION['error'] = 'Chỉ cho phép file dạng .mp3'; 
     header('location:form_insert.php');
     exit();
@@ -60,7 +60,7 @@ $path_file_audio = $folder_audio . $file_audio_name;
 
 move_uploaded_file($audio['tmp_name'], $path_file_audio);
 
-require_once '../../connect.php';
+require_once '../../database/connect.php';
 
 $sql = "insert into songs(name, image, audio, lyric, vocalist, category_id, admin_id)
 values(?, ?, ?, ?, ?, ?, ?)";

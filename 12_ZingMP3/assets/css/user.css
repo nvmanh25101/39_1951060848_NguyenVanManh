@@ -349,10 +349,11 @@ body {
     color:plum;
 }    
 
-.main_article{
+.main_article {
     text-decoration: none;
     margin-top: 20px;
 }
+
 .main_article-img{
     overflow: hidden;
     display: inline-block;
@@ -429,8 +430,7 @@ body {
 }
 .row__item-display:hover .row__item-img {
     transform: scale(1.2, 1.2);
-  }
-
+}
 
 .container__footer-header{
     height: 50px;
