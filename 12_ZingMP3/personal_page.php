@@ -1,4 +1,4 @@
-<?php require_once './template/header.php' ?>
+<?php require_once './template/heading.php' ?>
         <div class="container-fluid px-4">
             <div class="user__profile-container">
                 <div class="user__avatar">

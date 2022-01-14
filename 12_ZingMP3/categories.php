@@ -6,7 +6,7 @@
     $sql = "select * from categories";
     $result = mysqli_query($connect, $sql);
 
-    require_once './template/header.php';
+    require_once './template/heading.php';
 ?>
 
             <!-- Content -->
