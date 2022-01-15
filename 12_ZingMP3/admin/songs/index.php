@@ -45,7 +45,7 @@
                     <table class="song__table table table-sm table-dark table-bordered table-hover align-middle">
                         <caption class="caption-top text-center mb-2">
                             <form action="">
-                                <input type="search" name="search" class="form__search" value="<?php echo $search ?>" placeholder="Nhập để tìm kiếm">
+                                <input type="search" name="search" class="form__search" value="<?= $search ?>" placeholder="Nhập để tìm kiếm">
                             </form>
                         </caption>
                         <thead>

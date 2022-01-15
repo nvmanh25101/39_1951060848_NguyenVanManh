@@ -1,12 +1,18 @@
-<?php require_once './template/heading.php' ?>
+<?php session_start();
+    if(empty($_SESSION['id'])) {
+        header('location:index.php');
+        exit();
+    }
+    require_once './template/heading.php';
+?>
         <div class="container-fluid px-4">
             <div class="user__profile-container">
                 <div class="user__avatar">
                     <figure class="user__avatar-img">
-                        <img src="https://s120-ava-talk.zadn.vn/9/3/2/e/2/120/4b9ba4c1d6f3d74933e81273060ff954.jpg" alt="">
+                        <img src="./assets/images/users/<?= $_SESSION['image'] ?>" alt="">
                     </figure>
                 </div>
-                <h3 class="title">Phạm Vân Ly</h3>
+                <h3 class="title"><?= $_SESSION['name'] ?></h3>
                 <div class="user__profile-actions">
                     <a class="user-btn user-btn user-rounded vip-btn  user-small  " tabindex="0" href="" target="_blank">Nâng Cấp VIP</a>
                     <a class="user-btn user-btn user-rounded vip-code-btn user-small " tabindex="0" href="" target="_blank">Nhập code vip</a>
@@ -21,11 +27,11 @@
                 <nav class="user-navbar user-profile-navbar is-oval  user-navbar-wrap ">
                     <div class="user-narbar-container">
                         <ul class="user-navbar-menu">
-                            <li class="user-navbar-item is-active">
+                            <li class="user-navbar-item">
                                 <div class="navbar-link"><a class="" href="">TỔNG QUAN</a>
                                 </div>
                             </li>
-                            <li class="user-navbar-item">
+                            <li class="user-navbar-item is-active">
                                 <div class="navbar-link">
                                     <a class="" href="">BÀI HÁT</a>
                                 </div>
@@ -331,18 +337,12 @@
                 </table>
             </div>
 
-            <div class="footer">
-                <div class="footer__content">
-                    <p>14 bài hát </p>
-                    <i class=" footer__content-icon fas fa-circle"></i>
-                    <p> 42 phút</p>
-                </div>
-            </div>
+            <?php require_once './music_player.php' ?>
         </div>
     </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

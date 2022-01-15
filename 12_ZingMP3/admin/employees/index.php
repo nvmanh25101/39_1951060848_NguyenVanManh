@@ -36,6 +36,7 @@
         <div class="main__container">
             <div class="container-fluid px-4">
                 <a href="form_insert.php" class="btn btn-dark btn-lg fs-3">Thêm</a>
+                <?php require_once '../error_success.php' ?>
                 <div class="row gx-5">
                     <div class="col-12">
                         <table class="employee__table table table-sm table-dark table-bordered table-hover align-middle">

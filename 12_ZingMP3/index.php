@@ -2,7 +2,13 @@
     session_start();
 
     require_once './database/connect.php';
-    $sql = "select * from playlists";
+ 
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+
+    $sql = "select * from playlists where name like '%$search%'";
     $result = mysqli_query($connect, $sql);
 
     require_once './template/heading.php';
@@ -262,7 +268,7 @@
                 </div>
                 
             </footer>
-
+        <?php include './music_player.php'?>
         </div>
         
     </main>

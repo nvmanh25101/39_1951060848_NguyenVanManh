@@ -5,7 +5,9 @@
                 </div>
                 <div class="header_search">
                   <i class="bi bi-search"></i>
-                  <input type="text" class="header_search-input" placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV...">
+                  <form action="" class="header_search-form">
+                      <input type="search" name="search" class="header_search-input" value="<?= $search ?>"placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV...">
+                  </form>
                 </div>
                 <div class="header_right">
                     <div class="header__topic">

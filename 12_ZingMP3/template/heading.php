@@ -14,13 +14,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/css/user.css">
     <link rel="stylesheet" href="./assets/css/personal_page.css">
+    <link rel="stylesheet" href="./assets/css/category.css">
+    <!-- <link rel="stylesheet" href="./assets/css/playlist.css"> -->
     <title>Zing MP3 | Nghe tải nhạc chất lượng cao</title>
 </head>
 <body>
     <main class="app_main">
         <!-- Sidebar -->
         <?php require 'template/navbar.php' ?>
-        <!-- Container -->
-        <div class="main__container">
-            <!-- Header -->
+        <!-- Header -->
         <?php require 'template/header.php' ?>
+        <!-- Container --> 
+        <div class="main__container">
+

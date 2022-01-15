@@ -1,9 +1,13 @@
 <?php 
     session_start();
 
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
 
     require_once './database/connect.php';
-    $sql = "select * from categories";
+    $sql = "select * from categories where name like '%$search%'";
     $result = mysqli_query($connect, $sql);
 
     require_once './template/heading.php';
@@ -16,7 +20,7 @@
                 </div>
                 <div class="row gx-5 mt-4">
                     <?php foreach ($result as $each) { ?>
-                        <a class="main_article col-3">
+                        <a class="main_article col-3" href="./category.php?id=<?= $each['id'] ?>">
                             <div  class="main_article-img">
                                 <img src="./assets/images/categories/<?= $each['image'] ?>" style="width:200px" alt="">
                                 <div class="main_article-icon">
