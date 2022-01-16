@@ -8,6 +8,7 @@
     z-index: 1;
     background-color: #170f23;
     height: 100%;
+    
 }
 
 .user__avartar {
@@ -189,7 +190,7 @@ a, a.active, a:hover {
     color: #dadada;
 }
 /* css list bài hát */
-.container {
+ .container {
     flex-grow: 1;
     margin: 0 auto;
     position: relative;
@@ -239,9 +240,9 @@ h3.title {
     line-height: normal;
     border: 0;
     display: inline-block;
-    font-weight: 400;
-    /* text-transform: none;
-    text-align: center; */
+    font-weight: 400; 
+     text-transform: none;
+    text-align: center; 
     cursor: pointer;
     position: relative;
 }
@@ -250,10 +251,10 @@ h3.title {
     font-size: 20px;
     margin-right: 4px;
 }
-/* .icon {
+ .icon {
     line-height: 66%;
     display: inline-block;
-} */
+} 
 .zm-btn.is-outlined.active {
     background-color: #7200a1;
     border-color: #7200a1;
@@ -304,9 +305,9 @@ h3.title {
     color: darkgrey;
     cursor: pointer;
     font-size: 1.3rem;
-}
+} 
 /*css phần hover */
- .main__list{
+ .main__list {
     position: relative;
 }
 .main__list-hover2{
@@ -340,7 +341,155 @@ h3.title {
     display:block;
     background-color:rgba(66,66,66,0.4) ;
      
-}  
+}   
+
+/* CSS song */
+/* .playlist__link {
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 0;
+    position: relative;
+}
+
+.playlist__item.active {
+    background-color: #2f2739;
+}
+
+
+
+.personal__header-name,
+.personal__header-album,
+.personal__header-time{
+    color:rgba(169, 169, 169, 0.7);
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.personal__header-name {
+    padding-left: 33px;
+}
+.playlist__item:hover {
+    background-color: #2f2739;
+}
+
+.playlist__link:hover .playlist__actions,
+.playlist__link:hover .playlist__thumb-icon {
+    display: flex;
+}
+
+.playlist__icon {
+    color:rgba(255,255,255, 0.5);
+    font-size: 1.5rem;
+    margin-right: 9px;
+    display: flex;
+    align-items: center;
+}
+
+.playlist__img {
+    position: relative;
+}
+
+.playlist__thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+.playlist__thumb-icon {
+    display: none;
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 8px;
+    bottom: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.playlist__thumb-icon i {
+    margin: auto;
+}
+
+.playlist__info-title {
+     font-weight: 500; 
+    font-size: 1.4rem;
+    color: white;
+    display: block;
+}
+
+.playlist__info-subtitle {
+    color:darkgray;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.playlist__album,
+.playlist__time {
+    color: darkgrey;
+    cursor: pointer;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+}
+
+.playlist__actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36%;
+    background-color: #2f2739;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.playlist__actions i {
+    color:rgb(255, 255, 255);
+    font-size: 1.5rem;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.playlist__actions i:hover {
+    background-color: #4c4555;
+}
+
+.playlist__more {
+    position: relative;
+}
+
+.playlist__more:hover .playlist__more-list {
+    display: block;
+}
+
+.playlist__more-list {
+    display: none;
+    padding: 0;
+    list-style: none;
+    width: 140px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #432275;
+    border-radius: 5px;
+}
+
+.playlist__more-list li {
+    padding: 4px 0;
+}
+
+ */
+
+
+
+
 
 .footer__content{
     display: flex;
