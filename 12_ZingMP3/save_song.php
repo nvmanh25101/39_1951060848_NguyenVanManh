@@ -1,6 +1,10 @@
 <?php
-
+session_start();
 try {
+    if(empty($_SESSION['id'])) {
+        throw new Exception("Bạn phải đăng nhập!");
+    }
+
     if(empty($_POST['id']) || empty($_POST['song'])) {
         throw new Exception("Không tồn tại người dùng hoặc bài hát");
     }

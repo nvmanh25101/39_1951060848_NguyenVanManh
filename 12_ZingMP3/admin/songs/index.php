@@ -26,14 +26,16 @@
     $num_page = ceil($num_song / $num_song_per_page);
     $skip_page = $num_song_per_page * ($page - 1);
 
-    $sql = "select songs.*, categories.name as category_name, admin.name as admin_name
+    $sql = "select songs.*, categories.name as category_name, admin.name as admin_name, songs.admin_id
     from songs
     join categories
     on categories.id = songs.category_id
     join admin
     on admin.id = songs.admin_id
     where songs.name like '%$search%'
-    limit $num_song_per_page offset $skip_page";
+    order by songs.id desc
+    limit $num_song_per_page offset $skip_page
+    ";
     $result = mysqli_query($connect, $sql);
 ?>
 
@@ -45,9 +47,11 @@
                     <table class="song__table table table-sm table-dark table-bordered table-hover align-middle">
                         <caption class="caption-top text-center mb-2">
                             <form action="">
-                                <input type="search" name="search" class="form__search" value="<?php echo $search ?>" placeholder="Nhập để tìm kiếm">
+                                <input type="search" name="search" class="form__search" value="<?= $search ?>" placeholder="Nhập để tìm kiếm">
                             </form>
                         </caption>
+
+                        <?php require_once '../error_success.php' ?>
                         <thead>
                             <tr>
                             <th scope="col">Mã</th>
@@ -80,12 +84,12 @@
                                     <td><?= $each['category_name'] ?></td>
                                     <td><?= $each['admin_name'] ?></td>
                                     <td>
-                                        <a href="form_update.php?id=<?= $each['id'] ?>">
+                                        <a href="form_update.php?id=<?= $each['id'] ?>&admin_id=<?= $each['admin_id'] ?>">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="delete.php?id=<?= $each['id'] ?>">
+                                        <a href="delete.php?id=<?= $each['id'] ?>&admin_id=<?= $each['admin_id'] ?>">
                                         <i class="bi bi-trash-fill"></i>
                                         </a>
                                     </td>

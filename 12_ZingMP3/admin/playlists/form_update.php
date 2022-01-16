@@ -6,6 +6,7 @@
     if(empty($_GET['id'])) {
         $_SESSION['error'] = 'Không có dữ liệu để sửa!';
         header('location:index.php');
+        exit();
     }
 
     $id = $_GET['id'];

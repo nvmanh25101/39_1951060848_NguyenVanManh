@@ -12,7 +12,7 @@
 <?php
     if($_GET['email'] && $_GET['token'])
     {
-        require_once "./connect.php";
+        require_once "../database/connect.php";
         $email = $_GET['email'];
         $token_verification = $_GET['token'];
         $sql = "select * from users where email='$email' and token_verification = '$token_verification'";

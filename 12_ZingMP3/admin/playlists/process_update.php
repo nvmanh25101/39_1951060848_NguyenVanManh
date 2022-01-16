@@ -16,7 +16,7 @@ if(empty($_POST['name'])) {
 }
 
 $name = $_POST['name'];
-$image_old = $_FILES['image_old'];
+$image_old = $_POST['image_old'];
 $image_new = $_FILES['image_new'];
 
 if($image_new['size'] > 0) {
@@ -32,13 +32,13 @@ if($image_new['size'] > 0) {
         exit();
     }
 
-    if ($image["size"] > 500000) {
+    if ($image_new["size"] > 500000) {
         $_SESSION['error'] = 'File của bạn quá lớn!'; 
         header("location:form_update.php?id=$id");
         exit();
     }
 
-    move_uploaded_file($image['tmp_name'], $path_file);
+    move_uploaded_file($image_new['tmp_name'], $path_file);
 }
 else {
     $file_name = $image_old;

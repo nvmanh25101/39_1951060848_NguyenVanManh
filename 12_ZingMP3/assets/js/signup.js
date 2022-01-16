@@ -1,28 +1,18 @@
 $(document).ready(function() {
+    let is_valid = true;
+
     $("#email").keyup(function() {
         let regex_email = /^\w{5,30}(@gmail\.com)$/;
         if(!regex_email.test($(this).val())) {
             $("#error_email").text("Email không hợp lệ");
+            $(this).addClass('error');
             $(this).focus();
-            $('.btn-signing').click(function(event) {
-                event.preventDefault();
-            })
+            is_valid = false;
         }
         else {
-            $.ajax({
-                url: "check_signup.php",
-                type: "post",
-                data: {email:$(this).val()},
-
-                success:function(res) {
-                    $("#error_email").text(res);
-                    $(this).focus();
-                    $('.btn-signing').click(function(event) {
-                        event.preventDefault();
-                    })
-                }
-             
-            })
+            $("#error_email").text("");
+            $(this).removeClass('error');
+            is_valid = true;
         } 
     })
     
@@ -31,13 +21,12 @@ $(document).ready(function() {
             $("#error_password").text("Mật khẩu ngắn quá. Dễ bị hack đó!");
             $("#password").addClass("error");
             $(this).focus();
-            $('.btn-signing').click(function(event) {
-                event.preventDefault();
-            })
+            is_valid = false;
         }
         else{
             $("#error_password").text("");
             $("#password").removeClass("error");
+            is_valid = true;
         }
     })
 
@@ -47,27 +36,55 @@ $(document).ready(function() {
             $("#error_name").text("Tên không hợp lệ");
             $("#name").addClass("error");
             $(this).focus();
-            $('.btn-signing').click(function(event) {
-                event.preventDefault();
-            })
+            is_valid = false;
         }
         else{
             $("#error_name").text("");
             $("#name").removeClass("error");
+            is_valid = true;
+        }
+    })
+
+    $(".form__input").change(function() {
+        $(this).addClass('active');
+        if($("#email").val().length > 0 && $("#password").val().length > 0) {
+            $.ajax({
+                url: "check_signup.php",
+                type: "post",
+                data: {email:$('#email').val()},
+    
+                success:function(res) {
+                    if(res == 1) {
+                        $("#error").text('Tài khoản hoặc mật khẩu không chính xác');
+                        is_valid = false;
+                    }
+                    else {
+                        $("#error").text('');
+                    }
+                }
+            })
         }
     })
 
     $('.btn-signing').click(function(event) {
-        let is_valid = true;
-        if($('#name').val().length === 0 || $('#email').val().length === 0 || $('#password').val(),length === 0) {
+        if($('#email').val().length === 0 || $('#password').val().length === 0) {
             is_valid = false;
+            if($('#email').val().length === 0) {
+                $("#error_email").text("Email không được để trống");
+            }
+            if($('#password').val().length === 0) {
+                $("#error_password").text("Mật khẩu không được để trống");
+            }
+            if($('#name').val().length === 0) {
+                $("#error_name").text("Tên không được để trống");
+            }
+            
         }
+
         if(!is_valid) {
             event.preventDefault();
         }
     })
     
-    $(".form__input").change(function() {
-            $(this).addClass('active');
-    })
+   
 })

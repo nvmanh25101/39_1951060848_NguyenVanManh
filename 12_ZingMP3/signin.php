@@ -28,6 +28,8 @@
     <link rel="shortcut icon" href="https://static-zmp3.zadn.vn/skins/zmp3-v5.2/images/icon_zing_mp3_60.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/signing.css">
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+
     <title>Đăng nhập</title>
 </head>
 <body>
@@ -61,7 +63,7 @@
                                         <label class="fs-4" for="remember">Ghi nhớ đăng nhập</label>
                                         <input type="checkbox" id="remember" name="remember" class="form__check-input" />
                                     </div>
-                
+                                    <span id="error" class="error_input"></span>
                                     <button class="btn-signing btn btn-outline-light btn-lg px-5 fs-4" id="btn-signin" type="submit">Đăng nhập</button>
                                 </form>
                             </div>
@@ -77,7 +79,6 @@
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="./assets/js/jquery-3.6.0.min.js"></script>
 <script src="./assets/js/signin.js"></script>
 </body>
 </html>

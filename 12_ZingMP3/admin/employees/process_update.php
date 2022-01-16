@@ -18,7 +18,7 @@ if(empty($_POST['name']) || empty($_POST['gender']) || empty($_POST['phone'])) {
 $name = $_POST['name'];
 $gender = $_POST['gender'];
 $phone = $_POST['phone'];
-$image_old = $_FILES['image_old'];
+$image_old = $_POST['image_old'];
 $image_new = $_FILES['image_new'];
 
 if($image_new['size'] > 0) {
@@ -27,7 +27,7 @@ if($image_new['size'] > 0) {
     $file_name = 'admin_' . time() . '.' . $file_extension; // tránh trùng ảnh
     $path_file = $folder . $file_name;
 
-    move_uploaded_file($image['tmp_name'], $path_file);
+    move_uploaded_file($image_new['tmp_name'], $path_file);
 }
 else {
     $file_name = $image_old;

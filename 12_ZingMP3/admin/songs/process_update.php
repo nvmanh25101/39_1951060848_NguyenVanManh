@@ -20,9 +20,9 @@ $lyric = $_POST['lyric'];
 $vocalist = $_POST['vocalist'];
 $category_id = $_POST['category_id'];
 $admin_id = $_POST['admin_id'];
-$image_old = $_FILES['image_old'];
+$image_old = $_POST['image_old'];
 $image_new = $_FILES['image_new'];
-$audio_old = $_FILES['audio_old'];
+$audio_old = $_POST['audio_old'];
 $audio_new = $_FILES['audio_new'];
 
 if($image_new['size'] > 0) {
@@ -31,7 +31,7 @@ if($image_new['size'] > 0) {
     $file_name = 'song_' . time() . '.' . $file_extension; // tránh trùng ảnh
     $path_file = $folder . $file_name;
 
-    move_uploaded_file($image['tmp_name'], $path_file);
+    move_uploaded_file($image_new['tmp_name'], $path_file);
 }
 else {
     $file_name = $image_old;
@@ -43,7 +43,7 @@ if($audio_new['size'] > 0) {
     $file_audio_name = 'song_' . time() . '.' . $file_extension; // tránh trùng ảnh
     $path_audio_file = $folder_audio . $file_audio_name;
 
-    move_uploaded_file($audio['tmp_name'], $path_audio_file);
+    move_uploaded_file($audio_new['tmp_name'], $path_audio_file);
 }
 else {
     $file_audio_name = $audio_old;
@@ -57,13 +57,12 @@ image = ?,
 audio = ?,
 lyric = ?,
 vocalist = ?,
-category_id = ?,
-admin_id = ?
-where id = '$id'";
+category_id = ?
+where id = '$id' and admin_id = '$admin_id'";
 
 $stmt = mysqli_prepare($connect, $sql);
 if($stmt) {
-    mysqli_stmt_bind_param($stmt, 'sssssii', $name, $file_name, $file_audio_name, $lyric, $vocalist, $category_id, $admin_id);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $name, $file_name, $file_audio_name, $lyric, $vocalist, $category_id);
     mysqli_stmt_execute($stmt);
 
     $_SESSION['success'] = 'Đã sửa thành công';

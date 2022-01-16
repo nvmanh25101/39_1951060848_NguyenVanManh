@@ -2,10 +2,17 @@
     session_start();
 
     require_once './database/connect.php';
-    $sql = "select * from playlists";
+ 
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+
+    $sql = "select * from playlists where name like '%$search%'
+    order by id desc";
     $result = mysqli_query($connect, $sql);
 
-    require_once './template/header.php';
+    require_once './template/heading.php';
 ?>
 
             <!-- Content -->
@@ -262,7 +269,7 @@
                 </div>
                 
             </footer>
-
+        <?php include './music_player.php'?>
         </div>
         
     </main>

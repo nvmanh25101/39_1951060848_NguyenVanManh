@@ -9,6 +9,6 @@ if(isset($_POST['email'])) {
     where email= '$email'";
     $result = mysqli_query($connect, $sql);
     if(mysqli_num_rows($result) == 0) {
-        echo "Email này không tồn tại, vui lòng đăng ký!";
+        echo 1;
     }
 }
