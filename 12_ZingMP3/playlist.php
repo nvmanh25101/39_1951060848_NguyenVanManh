@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/user.css">
   <link rel="stylesheet" href="assets/css/playlist.css">
   <link rel="stylesheet" href="assets/css/music_player.css">
   <title>Top 100 Âu Mỹ hay nhất</title>
@@ -24,11 +25,6 @@
   <?php
   $id = $_GET['id'];
 
-  $search = '';
-  if(isset($_GET['search'])) {
-      $search = $_GET['search'];
-  }
-
   require_once './database/connect.php';
   $sql = "select playlists.*, playlist_song.created_at,
       songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
@@ -37,7 +33,7 @@
       on playlist_song.playlist_id = playlists.id
       join songs
       on playlist_song.song_id = songs.id
-      where playlists.id = '$id' and songs.name like '%$search%'
+      where playlists.id = '$id'
       order by song_id desc";
 
   $songs = mysqli_query($connect, $sql);

@@ -50,7 +50,7 @@
                                         <label class="form__label form-label fs-4" for="password">Mật khẩu</label>
                                         <span id="error_password" class="error_input"></span>
                                     </div>
-                
+                                    <span id="error" class="error_input"></span>
                                     <button class="btn-signing btn btn-outline-light btn-lg px-5 fs-4" type="submit">Đăng ký</button>
                                  </form>
                                 

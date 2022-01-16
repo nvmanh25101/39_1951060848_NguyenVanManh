@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="main_article col-11 ">
+            <div class="main_article col-11">
                 <table class="table">
                     <thead>
                         <tr>

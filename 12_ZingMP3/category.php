@@ -2,16 +2,11 @@
 
 require_once './database/connect.php';
 
-$search = '';
-if(isset($_GET['search'])) {
-    $search = $_GET['search'];
-}
-
 $id = $_GET['id'];
 
 $sql = "select songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
  from songs
-where songs.category_id = '$id' and songs.name like '%$search%'
+where songs.category_id = '$id'
 order by song_id desc";
 $songs = mysqli_query($connect, $sql);
 $song_top = mysqli_fetch_array($songs);
@@ -19,6 +14,7 @@ $song_top = mysqli_fetch_array($songs);
 $sql = "select * from categories where id= '$id'";
 $categories = mysqli_query($connect, $sql);
 $category = mysqli_fetch_array($categories);
+
 require_once './template/heading.php';
 ?>
 <!-- Content -->
