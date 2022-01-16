@@ -25,6 +25,11 @@
   <?php
   $id = $_GET['id'];
 
+  $search = '';
+  if(isset($_GET['search'])) {
+      $search = $_GET['search'];
+  }
+
   require_once './database/connect.php';
   $sql = "select playlists.*, playlist_song.created_at,
       songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
@@ -33,7 +38,7 @@
       on playlist_song.playlist_id = playlists.id
       join songs
       on playlist_song.song_id = songs.id
-      where playlists.id = '$id'
+      where playlists.id = '$id' and songs.name like '%$search%'
       order by song_id desc";
 
   $songs = mysqli_query($connect, $sql);

@@ -11,16 +11,18 @@
 
     $id = $_SESSION['id'];
     require_once './database/connect.php';
-    $sql = "select songs.* from songs
+    $sql = "select songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
+     from songs
     join saved_songs
     on saved_songs.song_id = songs.id 
     where saved_songs.user_id = '$id' and name like '%$search%'
     order by songs.id desc";
-    $result = mysqli_query($connect, $sql);
+    $songs = mysqli_query($connect, $sql);
+    $song_top = mysqli_fetch_array($songs);
 
     require_once './template/heading.php';
 ?>
-        <div class="container-fluid px-4">
+        <div class="container-fluid px-5">
             <div class="user__profile-container">
                 <div class="user__avatar">
                     <figure class="user__avatar-img">
@@ -98,66 +100,34 @@
                     </div>
                 </div>
             </div>
-            <div class="main_article col-11">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="main__list-title" scope="col">Bài hát</th>
-                            <th class="main__list-title" scope="col">Album</th>
-                            <th class="main__list-title" scope="col">Thời gian</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($result as $each): ?>
-                            <tr>
-                                <th scope="row">
-                                    <div class="main__list">
-                                        <i class="fas fa-music"></i>
-                                        <img src="assets/images/songs/<?= $each['image'] ?>" style="width:40px" alt="">
-                                        <ul class="main__list-songname">
-                                            <li class="main__list-songname--li1"><?= $each['name'] ?></li>
-                                            <li><?= $each['vocalist'] ?></li>
-                                        </ul>
-                                        <div class="main__list-hover2">
-                                            <ul class="main__list-hover2--ul">
-                                                <li class="main__list-hover2--li1">
-                                                    <span class="material-icons-outlined">
-                                                        play_arrow
-                                                    </span>
-                                                </li>
-                                                <li class="main__list-hover2--li2">
-                                                    <span class="material-icons-outlined">
-                                                        music_video
-                                                    </span>
-                                                    <span class="material-icons-outlined">
-                                                        favorite_border
-                                                    </span>
-                                                    <span class="material-icons-outlined">
-                                                        more_horiz
-                                                    </span>
-                                                </li>
-
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="main__list-album"><?= $each['name'] ?> (Single)</td>
-                                <td class="main__list-album">02:20</td>
-
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-
-                </table>
+            <div class="playlist col-12 mt-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="playlist__header row d-flex align-center">
+                  <div class="playlist__header-name col-7">
+                    Bài hát
+                  </div>
+                  <div class="playlist__header-album col-3">
+                    Album
+                  </div>
+                  <div class="playlist__header-time col-2">
+                    Thời gian
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+               <?php require_once './song_list.php' ?>
+              </div>
             </div>
-
+          </div>
+            <?php include './template/toast.php' ?>
             <?php require_once './music_player.php' ?>
         </div>
     </div>
     </main>
-
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="./assets/js/music_player.js"></script>
 </body>
 
 </html>

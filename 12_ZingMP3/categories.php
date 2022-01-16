@@ -16,7 +16,7 @@
             <!-- Content -->
             <div class="container-fluid px-4">
                 <div class="main_content">
-                    <h5 class="main_text">Lựa chọn hôm nay</h5>
+                    <h5 class="main_text">Quốc Gia</h5>
                 </div>
                 <div class="row gx-5 mt-4">
                     <?php foreach ($result as $each) { ?>
@@ -34,7 +34,7 @@
                     <?php } ?>
                 </div>
                 <div class="main_content">
-                    <h5 class="main_text">Có thể bạn muốn nghe</h5>
+                    <h5 class="main_text">Nhạc Phim</h5>
                 </div>
                 <div class="row gx-5 mt-4">
                     <div class="main_article col-3">
