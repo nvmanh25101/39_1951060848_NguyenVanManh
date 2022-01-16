@@ -8,7 +8,8 @@
         $search = $_GET['search'];
     }
 
-    $sql = "select * from playlists where name like '%$search%'";
+    $sql = "select * from playlists where name like '%$search%'
+    order by id desc";
     $result = mysqli_query($connect, $sql);
 
     require_once './template/heading.php';

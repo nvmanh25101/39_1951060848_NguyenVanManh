@@ -34,7 +34,7 @@
                     <?php } ?>
                 </div>
                 <div class="main_content">
-                    <h5 class="main_text" style="width: 300px;">Có thể bạn muốn nghe</h5>
+                    <h5 class="main_text">Có thể bạn muốn nghe</h5>
                 </div>
                 <div class="row gx-5 mt-4">
                     <div class="main_article col-3">
@@ -131,41 +131,8 @@
                         <a  class="main_article-title" href="">Nhạc Hoa trong tháng</a>
                     </div>
                 </div>
-                <!-- <div class="row container__section mt-30" style="margin-left: 200px;margin-top: 50px;width: 950px;height: 70px;">
-                    <div class="col l-12 m-12 c-12">
-                        <div class="row no-wrap label--container" style="margin-right: 0;margin-left: 0;">
-                            <div class="col l-4 m-4 c-6 mb-30">
-                                <div class="row__item item--label">
-                                    <div class="row__item-container flex--top-left">
-                                        <div class="row__item-display br-5">
-                                           <div class="row__item-img img--label" style="background: url('./img/labels/label1.jpg') no-repeat center center / cover"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col l-4 m-4 c-6 mb-30">
-                                <div class="row__item item--label">
-                                    <div class="row__item-container flex--top-left">
-                                        <div class="row__item-display br-5">
-                                           <div class="row__item-img img--label" style="background: url('./img/labels/label2.jpg') no-repeat center center / cover"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col l-4 m-4 c-6 mb-30">
-                                <div class="row__item item--label">
-                                    <div class="row__item-container flex--top-left">
-                                        <div class="row__item-display br-5">
-                                            <div class="row__item-img img--label" style="background: url('./img/labels/label3.jpg') no-repeat center center / cover"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="main_content">
-                    <h5 class="main_text" style="width: 300px;">Top 100</h5>
+                    <h5 class="main_text">Top 100</h5>
                 </div>
                 <div class="row row-cols-4 gx-5 mt-4">
                     <div class="main_article col ">
@@ -210,63 +177,10 @@
                                <span class="material-icons-outlined">more_horiz</span>
                             </div>
                         </div>
-                        <a  class="main_article-title" href="">Top100 nhạc Hàn Quốc hay nhất</a>
+                        <a  class="main_article-title" href="">Top 100 nhạc Hàn Quốc hay nhất</a>
                     </div>
                 </div>
             </div>
-            <!-- Footer-->
-            <footer class="container__footer container-fluid px-4 my-5">
-                <div class="row gx-5">
-                    <div class="col-12 container__footer-header">
-                        <span>Đối Tác Âm Nhạc</span>
-                    </div>
-                    <div class="container__footer-brand">
-                        <div class="row">
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand1.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div> 
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand2.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>     
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand3.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>   
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand4.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>   
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand5.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>  
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand6.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>   
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand7.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>      
-                            <div class="col l-1-5 container__footer-brand-item">
-                                <div class="footer__brand-container" style="background-color: white;">
-                                    <img src="./assets/images/brands/brand7.png" alt="brand" class="container__footer-brand-img">
-                                </div>
-                            </div>      
-                        </div>
-                    </div>
-                </div>
-                
-            </footer>
 
         </div>   
         

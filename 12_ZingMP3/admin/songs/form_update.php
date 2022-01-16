@@ -1,23 +1,30 @@
 <?php 
     require_once '../check_admin_signin.php';
     $page = 'songs';
-    require_once '../navbar-vertical.php';
-
+    
     if(empty($_GET['id'])) {
         $_SESSION['error'] = 'Phải chọn để sửa!';
         header('location:index.php');
         exit();
     }
-
+    
+    if($_GET['admin_id'] !== $_SESSION['id'] || $_SESSION['level'] !== 1) {
+        $_SESSION['error'] = 'Bạn không có quyền để truy cập';
+        header('location:index.php');
+        exit();
+    }
+    
     $id = $_GET['id'];
     require_once '../../database/connect.php';
-
+    
     $sql = "select * from songs where id = '$id'";
     $result = mysqli_query($connect, $sql);
     $each = mysqli_fetch_array($result);
-
+    
     $sql = "select * from categories";
     $categories = mysqli_query($connect, $sql);
+    
+    require_once '../navbar-vertical.php';
 ?>
     <div class="main__form">
         <div class=" container-fluid px-4">
@@ -26,7 +33,7 @@
             <div class="row gx-5">
                 <div class="col-12 text-white">
 
-                     <form action="process_insert.php" method="post" enctype="multipart/form-data">
+                     <form action="process_update.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $each['id'] ?>">
 
                         <div class="mb-4 fs-4">
@@ -72,7 +79,7 @@
                             <label class="form-label">Thể loại</label>
                             <select class="form__select form-select" name="category_id">
                                 <?php foreach ($categories as $category) { ?>
-                                    <option value="<?php echo $each['id'] ?>"
+                                    <option value="<?php echo $category['id'] ?>"
                                         <?php if($each['category_id'] == $category['id']) { ?>
                                             selected
                                         <?php } ?>

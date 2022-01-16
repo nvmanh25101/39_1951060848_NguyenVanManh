@@ -35,15 +35,6 @@ $(document).ready(function() {
 
     tracks.click(function(e) {
       e.preventDefault();
-      // link = $(this);
-      // current = link.parent().index();
-      // thumb.click(function() {
-      //   run(link, audio[0]);
-      //   is_playing = true;
-      //   get_info(current);
-      //   $(player_play).addClass('playing')
-      //   song_time.text(audio[0].duration)
-      // })
     });
 
     thumb.click(function() {

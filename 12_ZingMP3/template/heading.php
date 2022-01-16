@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./assets/css/user.css">
     <link rel="stylesheet" href="./assets/css/personal_page.css">
     <link rel="stylesheet" href="./assets/css/category.css">
+    <link rel="stylesheet" href="./assets/css/music_player.css">
     <!-- <link rel="stylesheet" href="./assets/css/playlist.css"> -->
     <title>Zing MP3 | Nghe tải nhạc chất lượng cao</title>
 </head>

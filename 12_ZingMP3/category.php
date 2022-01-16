@@ -11,7 +11,8 @@ $id = $_GET['id'];
 
 $sql = "select songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
  from songs
-where songs.category_id = '$id' and where songs.name like '%$search%'";
+where songs.category_id = '$id' and songs.name like '%$search%'
+order by song_id desc";
 $songs = mysqli_query($connect, $sql);
 $song_top = mysqli_fetch_array($songs);
 
@@ -61,51 +62,7 @@ require_once './template/heading.php';
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="playlist__list row d-flex align-center">
-                        <ul class="col-12" id="playlist">
-                            <?php foreach ($songs as $song) : ?>
-                                <li class="row playlist__item">
-                                    <a href="./assets/audio/<?= $song['audio'] ?>" class="playlist__link">
-                                        <div class="playlist__content col-7 d-flex align-center">
-                                            <i class="playlist__icon bi bi-music-note-beamed"></i>
-                                            <div class="playlist__img">
-                                                <img src="assets/images/songs/<?= $song['song_image'] ?>" class="playlist__thumb" alt="">
-                                                <div class="playlist__thumb-icon">
-                                                    <i class="bi bi-play-fill"></i>
-                                                </div>
-                                            </div>
-                                            <div class="playlist__info">
-                                                <span class="playlist__info-title"><?= $song['song_name'] ?></span>
-                                                <span class="playlist__info-subtitle"><?= $song['vocalist'] ?></span>
-                                            </div>
-                                        </div>
-                                        <div class="playlist__album col-3">
-                                            <span><?= $song['song_name'] ?> (Single)</span>
-                                        </div>
-                                        <div class="playlist__time col-2">
-                                            02:20
-                                        </div>
-                                        <div class="playlist__actions">
-                                            <i class="bi bi-mic"></i>
-                                            <i class="bi bi-heart"></i>
-                                            <div class="playlist__more">
-                                                <i class="bi bi-three-dots"></i>
-                                                <?php if (isset($_SESSION['id'])) { ?>
-                                                    <ul class="playlist__more-list">
-                                                        <li>
-                                                            <button class="save-song" data-id='<?= $_SESSION['id'] ?>' data-song='<?= $song['song_id'] ?>'>
-                                                                Lưu bài hát
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
+                    <?php require_once './song_list.php' ?>
                 </div>
             </div>
         </div>

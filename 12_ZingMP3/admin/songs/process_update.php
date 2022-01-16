@@ -57,13 +57,12 @@ image = ?,
 audio = ?,
 lyric = ?,
 vocalist = ?,
-category_id = ?,
-admin_id = ?
-where id = '$id'";
+category_id = ?
+where id = '$id' and admin_id = '$admin_id'";
 
 $stmt = mysqli_prepare($connect, $sql);
 if($stmt) {
-    mysqli_stmt_bind_param($stmt, 'sssssii', $name, $file_name, $file_audio_name, $lyric, $vocalist, $category_id, $admin_id);
+    mysqli_stmt_bind_param($stmt, 'sssssi', $name, $file_name, $file_audio_name, $lyric, $vocalist, $category_id);
     mysqli_stmt_execute($stmt);
 
     $_SESSION['success'] = 'Đã sửa thành công';

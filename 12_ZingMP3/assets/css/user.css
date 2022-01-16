@@ -348,14 +348,15 @@ body {
 
 .main_text{
     color: #cdd6da;
-    width: 250px;
     font-size: x-large;
     font-weight: 700;
     font-family: Arial;
     padding-top: 5px;
     margin-left: 0;
     cursor: pointer;
+    width: 100%;
 }
+
 .main_text:hover{
     color:plum;
 }    

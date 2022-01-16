@@ -3,6 +3,21 @@
         header('location:index.php');
         exit();
     }
+
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+
+    $id = $_SESSION['id'];
+    require_once './database/connect.php';
+    $sql = "select songs.* from songs
+    join saved_songs
+    on saved_songs.song_id = songs.id 
+    where saved_songs.user_id = '$id' and name like '%$search%'
+    order by songs.id desc";
+    $result = mysqli_query($connect, $sql);
+
     require_once './template/heading.php';
 ?>
         <div class="container-fluid px-4">
@@ -74,7 +89,8 @@
                             <button class="zm-btn is-outlined active is-small is-upper " tabindex="0">
                                 <span class="material-icons-outlined">
                                     play_arrow
-                                </span><span>Phát tất cả</span>
+                                </span>
+                                <span>Phát tất cả</span>
                             </button>
                         </div>
                     </div>
@@ -92,246 +108,45 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                    <div class="main__list-hover2">
-                                        <ul class="main__list-hover2--ul">
-                                            <li class="main__list-hover2--li1">
-                                                <span class="material-icons-outlined">
-                                                    play_arrow
-                                                </span>
-                                            </li>
-                                            <li class="main__list-hover2--li2">
-                                                <span class="material-icons-outlined">
-                                                    music_video
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    more_horiz
-                                                </span>
-                                            </li>
-
+                        <?php foreach ($result as $each): ?>
+                            <tr>
+                                <th scope="row">
+                                    <div class="main__list">
+                                        <i class="fas fa-music"></i>
+                                        <img src="assets/images/songs/<?= $each['image'] ?>" style="width:40px" alt="">
+                                        <ul class="main__list-songname">
+                                            <li class="main__list-songname--li1"><?= $each['name'] ?></li>
+                                            <li><?= $each['vocalist'] ?></li>
                                         </ul>
+                                        <div class="main__list-hover2">
+                                            <ul class="main__list-hover2--ul">
+                                                <li class="main__list-hover2--li1">
+                                                    <span class="material-icons-outlined">
+                                                        play_arrow
+                                                    </span>
+                                                </li>
+                                                <li class="main__list-hover2--li2">
+                                                    <span class="material-icons-outlined">
+                                                        music_video
+                                                    </span>
+                                                    <span class="material-icons-outlined">
+                                                        favorite_border
+                                                    </span>
+                                                    <span class="material-icons-outlined">
+                                                        more_horiz
+                                                    </span>
+                                                </li>
 
+                                            </ul>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
+                                </th>
+                                <td class="main__list-album"><?= $each['name'] ?> (Single)</td>
+                                <td class="main__list-album">02:20</td>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                    <div class="main__list-hover2">
-                                        <ul class="main__list-hover2--ul">
-                                            <li class="main__list-hover2--li1">
-                                                <span class="material-icons-outlined">
-                                                    play_arrow
-                                                </span>
-                                            </li>
-                                            <li class="main__list-hover2--li2">
-                                                <span class="material-icons-outlined">
-                                                    music_video
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    more_horiz
-                                                </span>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-                        </tr>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
 
                 </table>

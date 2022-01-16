@@ -28,7 +28,9 @@
 
     $sql = "select * from playlists
     where name like '%$search%'
-    limit $num_playlist_per_page offset $skip_page";
+    order by id desc
+    limit $num_playlist_per_page offset $skip_page
+    ";
     $result = mysqli_query($connect, $sql);
 ?>
 

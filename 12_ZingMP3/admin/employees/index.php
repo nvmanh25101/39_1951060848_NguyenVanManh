@@ -29,7 +29,9 @@
     $sql = "select * from admin 
             where 
             name like '%$search%' and level = '0'
-            limit $num_employee_per_page offset $skip_page";
+            order by id desc
+            limit $num_employee_per_page offset $skip_page
+            ";
     $result = mysqli_query($connect, $sql);
 ?>
 
