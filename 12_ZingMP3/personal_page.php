@@ -1,23 +1,28 @@
+<?php session_start();
+    if(empty($_SESSION['id'])) {
+        header('location:index.php');
+        exit();
+    }
 
-<?php require_once './template/header.php' ?>
-        <div class="container-fluid px-4 mt-5 ">
-        <?php
-  $id = $_GET['id'];
-  require_once './database/connect.php';
-  $sql = "select playlists.*, playlist_song.created_at,
-      songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
-      from playlists
-      join playlist_song
-      on playlist_song.playlist_id = playlists.id
-      join songs
-      on playlist_song.song_id = songs.id
-      where playlists.id = '$id'";
-  $songs = mysqli_query($connect, $sql);
-  $song_top = mysqli_fetch_array($songs);
-  $sql = "select * from playlists where id = '$id'";
-  $playlists = mysqli_query($connect, $sql);
-  $playlist = mysqli_fetch_array($playlists);
-  ?>
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+
+    $id = $_SESSION['id'];
+    require_once './database/connect.php';
+    $sql = "select songs.name as song_name, songs.image as song_image, songs.audio, songs.vocalist, songs.id as song_id
+     from songs
+    join saved_songs
+    on saved_songs.song_id = songs.id 
+    where saved_songs.user_id = '$id' and name like '%$search%'
+    order by songs.id desc";
+    $songs = mysqli_query($connect, $sql);
+    $song_top = mysqli_fetch_array($songs);
+
+    require_once './template/heading.php';
+?>
+        <div class="container-fluid px-5">
             <div class="user__profile-container">
                 <div class="user__avatar">
                     <figure class="user__avatar-img">
@@ -95,115 +100,28 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="main_article col-11">
-            <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="main__list-title" scope="col">Bài hát</th>
-                            <th class="main__list-title" scope="col">Album</th>
-                            <th class="main__list-title" scope="col">Thời gian</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">
-                                <div class="main__list">
-                                    <i class="fas fa-music"></i>
-                                    <img src="assets/images/stay.jpeg" style="width:40px" alt="">
-                                    <ul class="main__list-songname">
-                                        <li class="main__list-songname--li1">STAY </li>
-                                        <li>The Kid LAROI,Justin Bieber</li>
-                                    </ul>
-                                    <div class="main__list-hover2">
-                                        <ul class="main__list-hover2--ul">
-                                            <li class="main__list-hover2--li1">
-                                                <span class="material-icons-outlined">
-                                                    play_arrow
-                                                </span>
-                                            </li>
-                                            <li class="main__list-hover2--li2">
-                                                <span class="material-icons-outlined">
-                                                    music_video
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                </span>
-                                                <span class="material-icons-outlined">
-                                                    more_horiz
-                                                </span>
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </th>
-                            <td class="main__list-album">STAY(Single)</td>
-                            <td class="main__list-album">02:20</td>
-
-                        </tr>
-                        <div class="col-12">
-                <div class="playlist__list row d-flex align-center">
-                  <ul class="col-12" id="playlist">
-                    <?php foreach ($songs as $song) : ?>
-                      <li class="row playlist__item">
-                        <a href="./assets/audio/<?= $song['audio'] ?>" class="playlist__link">
-                          <div class="playlist__content col-7 d-flex align-center">
-                            <i class="playlist__icon bi bi-music-note-beamed"></i>
-                            <div class="playlist__img">
-                              <img src="assets/images/songs/<?= $song['song_image'] ?>" class="playlist__thumb" alt="">
-                              <div class="playlist__thumb-icon">
-                                <i class="bi bi-play-fill"></i>
-                              </div>
-                            </div>
-                            <div class="playlist__info">
-                              <span class="playlist__info-title"><?= $song['song_name'] ?></span>
-                              <span class="playlist__info-subtitle"><?= $song['vocalist'] ?></span>
-                            </div>
-                          </div>
-                          <div class="playlist__album col-3">
-                            <span><?= $song['name'] ?></span>
-                          </div>
-                          <div class="playlist__time col-2">
-                            <span>02:20</span>
-                          </div>
-                          <div class="playlist__actions">
-                            <i class="bi bi-mic"></i>
-                            <i class="bi bi-heart"></i>
-                            <div class="playlist__more">
-                              <i class="bi bi-three-dots"></i>
-                              <?php if (isset($_SESSION['id'])) { ?>
-                                <ul class="playlist__more-list">
-                                  <li>
-                                    <button class="save-song" data-id='<?= $_SESSION['id'] ?>' data-song='<?= $song['song_id'] ?>'>
-                                      Lưu bài hát
-                                    </button>
-                                  </li>
-                                </ul>
-                              <?php } ?>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    <?php endforeach ?>
-                  </ul>
+            <div class="playlist col-12 mt-5">
+            <div class="row">
+              <div class="col-12">
+                <div class="playlist__header row d-flex align-center">
+                  <div class="playlist__header-name col-7">
+                    Bài hát
+                  </div>
+                  <div class="playlist__header-album col-3">
+                    Album
+                  </div>
+                  <div class="playlist__header-time col-2">
+                    Thời gian
+                  </div>
                 </div>
               </div>
-                     </tbody>
+              <div class="col-12">
+               <?php require_once './song_list.php' ?>
+              </div>
             </div>
-
-            
-
-            </div>
-
-            <!-- <div class="footer">
-                <div class="footer__content">
-                    <p>14 bài hát </p>
-                    <i class=" footer__content-icon fas fa-circle"></i>
-                    <p> 42 phút</p>
-                </div>
-            </div> -->
+          </div>
+            <?php include './template/toast.php' ?>
+            <?php require_once './music_player.php' ?>
         </div>
     </div>
     </main>
