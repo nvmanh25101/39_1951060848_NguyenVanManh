@@ -36,7 +36,7 @@
                                             Ảnh đại diện
                                             <img id="avatar__img" class="rounded-circle ms-4" src="./assets/images/users/no_avatar.png" alt="Ảnh đại diện" width="80" height="80"/>
                                         </label>
-                                        <input type="file" hidden id="avatar" name="image" onchange="document.getElementById('avatar__img').src = window.URL.createObjectURL(this.files[0])" class="form__input form-control form-control-lg"/>
+                                        <input type="file" hidden id="avatar" name="image" class="form__input form-control form-control-lg"/>
                                     </div>
 
                                     <div class="text-start">
@@ -68,6 +68,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="./assets/js/jquery-3.6.0.min.js"></script>
-<!-- <script src="./assets/js/signup.js"></script> -->
+<script src="./assets/js/signup.js"></script>
 </body>
 </html>

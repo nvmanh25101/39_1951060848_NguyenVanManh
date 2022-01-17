@@ -57,8 +57,10 @@ $(document).ready(function() {
             if($('#email').val().length === 0) {
                 $("#error_email").text("Email không được để trống");
             }
+            if($('#error_password').val().length === 0) {
+                $("#error_password").text("Mật khẩu không được để trống");
+            }
             
-            $("#error_password").text("Mật khẩu không được để trống");
         }
 
         if(!is_valid) {

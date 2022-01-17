@@ -45,6 +45,19 @@ $(document).ready(function() {
         }
     })
 
+    $("#avatar").change(function(e) {
+        let regex_file = /(?:\.png|\.jpg|\.jpeg)$/;
+        if(!regex_file.test($(this).val())) {
+            $("#error").text("File chỉ cho phép định dạng .jpg, .png, .jpeg");
+            is_valid = false;
+        }
+        else {
+            $("#error").text("");
+            is_valid = true;
+        }
+        $('#avatar__img').attr('src', URL.createObjectURL(e.target.files[0]));
+    })
+
     $(".form__input").change(function() {
         $(this).addClass('active');
         if($("#email").val().length > 0 && $("#password").val().length > 0) {

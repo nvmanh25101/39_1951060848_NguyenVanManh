@@ -80,19 +80,28 @@
 
         $('#password').change(function() {
             if($(this).val().length > 0) {
-                $('#error_password').text('');
-                is_valid = true;
-            }
+            $('#error_password').text('');
+            $(this).removeClass('error');
+            is_valid = true;
+        }
+        else {
+            $('#error_password').text('Mật khẩu không được để trống');
+            $(this).focus();
+            $(this).addClass('error');
+            is_valid = false;
+        }
         })
 
         $('.btn-signing').click(function(event) {
             if($('#email').val().length === 0 || $('#password').val().length === 0) {
                 is_valid = false;
                 if($('#email').val().length === 0) {
-                $("#error_email").text("Email không được để trống");
-            }
+                    $("#error_email").text("Email không được để trống");
+                }
+                if($('#error_password').val().length === 0) {
+                    $("#error_password").text("Mật khẩu không được để trống");
+                }
             
-            $("#error_password").text("Mật khẩu không được để trống");
             }
             if(!is_valid) {
                 event.preventDefault();
