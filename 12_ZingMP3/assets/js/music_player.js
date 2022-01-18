@@ -8,29 +8,27 @@ $(document).ready(function() {
   let song_time = playlist.find('.playlist__time');
   let play_btn = $(".player__play");
   let progress = $("#progress");
+  let progress_volume = $("#progress-volume");
   let song_thumb = $(".playlist__thumb");
   let song_title = $(".playlist__info-title");
   let song_subtitle = $(".playlist__info-subtitle");
   let player_thumb = $(".player__thumbnail")
   let player_title = $(".player__title")
   let player_subtitle = $(".player__subtitle")
-  let player_play = $(".player__play")
+  let player_volume_icon = $(".player__volume-icon")
   let is_playing = false;
-  // tracks.each(function() {
-  //   audio[0].src = $(this).attr("src")
-  //   song_time.text(Math.round((audio[0].duration / 60) * 100) / 100)
-  // })
-  init();
+  let is_mute = false;
 
+  init();
 
   function init() {
     len = tracks.length - 1;
     audio[0].volume = 1;
+    progress_volume.val(100);
     audio[0].play();
     is_playing = true;
-    $(player_play).addClass('playing')
+    $(play_btn).addClass('playing')
 
-    
     song_time.text(Math.round((audio[0].duration / 60) * 100) / 100)
 
     tracks.click(function(e) {
@@ -45,7 +43,7 @@ $(document).ready(function() {
       run(link, audio[0])
       is_playing = true
       get_info(current)
-      $(player_play).addClass('playing')
+      $(play_btn).addClass('playing')
     })
 
     audio[0].addEventListener('ended', function(e) {
@@ -57,6 +55,7 @@ $(document).ready(function() {
         link = tracks[current];
       }
       run($(link), audio[0]);
+      get_info(current)
       is_playing = true;
     })
 
@@ -78,16 +77,42 @@ $(document).ready(function() {
       audio[0].currentTime = seek_time;
     })
 
+    // Xử lý tăng giảm âm lượng
+    progress_volume.on('input', function(e) {
+      let seek_volume = e.target.value / 100;
+      audio[0].volume = seek_volume;
+      if(audio[0].volume == 0) {
+        is_mute = true;
+        $(".player__volume").addClass('mute');
+      } else {
+        is_mute = false;
+        $(".player__volume").removeClass('mute');
+      }
+    })
+
+    // Xử lý mute âm lượng
+    player_volume_icon.click(function() {
+      if (is_mute) {
+        $(audio[0]).prop("muted", false);
+        is_mute = false;
+        $(".player__volume").removeClass('mute');
+      } else {
+        $(audio[0]).prop("muted", true);
+        is_mute = true;
+        $(".player__volume").addClass('mute');
+      }
+    })
+
     // Xử lý khi click vào nút play
-    play_btn.click(function(e) {
+    play_btn.click(function() {
       if (is_playing) {
         audio[0].pause();
         is_playing = false;
-        $(player_play).removeClass('playing')
+        $(play_btn).removeClass('playing')
       } else {
         audio[0].play();
         is_playing = true;
-        $(player_play).addClass('playing')
+        $(play_btn).addClass('playing')
       }
     })
   }

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once './database/connect.php';
 
 $search = '';
@@ -25,7 +25,7 @@ require_once './template/heading.php';
 <!-- Content -->
 <div class="container-fluid px-4">
     <div class="row gx-5 mt-4">
-        <div class="media col-4">
+        <div class="media col-4 col-lg-4 col-12">
             <div class="media__img">
                 <img src="assets/images/categories/<?= $category['image'] ?>" alt="Image">
 

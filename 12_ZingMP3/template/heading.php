@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/css/user.css">
     <link rel="stylesheet" href="./assets/css/personal_page.css">
-    <link rel="stylesheet" href="./assets/css/category.css">
+    <link rel="stylesheet" href="./assets/css/playlist_song.css">
     <link rel="stylesheet" href="./assets/css/music_player.css">
     <!-- <link rel="stylesheet" href="./assets/css/playlist.css"> -->
     <title>Zing MP3 | Nghe tải nhạc chất lượng cao</title>
@@ -27,4 +27,3 @@
         <?php require 'template/header.php' ?>
         <!-- Container --> 
         <div class="main__container">
-

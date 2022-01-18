@@ -2,11 +2,9 @@
     <div class="player-with-thumb">
         <div class="player__thumb">
             <img src="./assets/images/songs/<?= $song_top['song_image'] ?? 'no_song.jpg' ?>" class="player__thumbnail" alt="">
-            <!-- <div class="play__left-img--hover">
-                <span class="play__left-img--icon material-icons-outlined">
-                  redo
-                </span>
-              </div> -->
+            <div class="player__thumb-action">
+                <i class="bi bi-arrows-angle-expand"></i>
+            </div>
         </div>
 
         <div class="player__content">
@@ -53,9 +51,12 @@
             <li class="player__item">
                 <i class="bi bi-aspect-ratio"></i>
             </li>
-            <li class="player__item">
-                <i class="bi bi-volume-up"></i>
-                <!-- <input id="progress" class="player__actions-progress mt-4" type="range" value="0" step="0.1" min="0" max="100"> -->
+            <li class="player__item player__volume">
+                <div class="player__volume-icon">
+                    <i class="bi bi-volume-mute player__volume-icon-mute"></i>
+                    <i class="bi bi-volume-up player__volume-icon-up"></i>
+                </div>
+                <input id="progress-volume" class="player__actions-progress" type="range" value="0" step="0.1" min="0" max="100">
             </li>
             <li class="player__item">
                 <i class="bi bi-music-note-list"></i>
