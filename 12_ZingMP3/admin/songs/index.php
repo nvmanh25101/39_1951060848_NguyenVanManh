@@ -5,9 +5,9 @@
 
     require_once '../../database/connect.php';
 
-    $page = 1;
+    $page_current = 1;
     if(isset($_GET['page'])) {
-        $page = $_GET['page'];
+        $page_current = $_GET['page'];
     }
 
     $search = '';
@@ -24,7 +24,7 @@
     $num_song_per_page = 5;
 
     $num_page = ceil($num_song / $num_song_per_page);
-    $skip_page = $num_song_per_page * ($page - 1);
+    $skip_page = $num_song_per_page * ($page_current - 1);
 
     $sql = "select songs.*, categories.name as category_name, admin.name as admin_name, songs.admin_id
     from songs
