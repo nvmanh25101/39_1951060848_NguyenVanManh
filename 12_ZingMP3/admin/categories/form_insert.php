@@ -22,7 +22,7 @@
                             <input type="file" name="image" id="image" accept="image/*" class="form__input form-control"/>
                         </div>
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4" onclick="return validate()">Thêm</button>
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Thêm</button>
                     </form>
                 </div>
                 
@@ -32,7 +32,6 @@
    
 </div>
 <script src="../../assets/js/jquery-3.6.0.min.js"></script>
-<script src="../../assets/js/admin.js"></script>
 </body>
 
 </html>

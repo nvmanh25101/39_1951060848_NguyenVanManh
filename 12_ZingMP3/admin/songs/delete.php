@@ -7,7 +7,7 @@ if(empty($_GET['id'])) {
     exit();
 }
   
-if($_GET['admin_id'] !== $_SESSION['id'] || $_SESSION['level'] !== 1) {
+if($_GET['admin_id'] != $_SESSION['id'] || $_SESSION['level'] != 1) {
     $_SESSION['error'] = 'Bạn không có quyền để truy cập';
     header('location:index.php');
     exit();

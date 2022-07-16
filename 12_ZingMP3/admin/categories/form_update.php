@@ -39,7 +39,7 @@
                             <input type="file" name="image_new" accept=".jpg, .png" class="form__input form-control"/>
                         </div>
 
-                        <button type="submit" class="form__btn btn btn-dark mb-4" onclick="return validate()">Sửa</button>
+                        <button type="submit" class="form__btn btn btn-dark mb-4">Sửa</button>
                     </form>
                 </div>
                 
@@ -50,22 +50,4 @@
 </div>
     
 </body>
-<script>
-    // let image = document.getElementById('image').value;
-    
-    function validate() {
-        let name = document.getElementById('name').value;
-
-        let check_error = false;
-        if(name.length === 0) {
-            document.getElementById('error').innerHTML = 'Tên không được để trống';
-
-            check_error = true;
-        }
-
-        if(check_error) {
-            return false;
-        }
-    }
-</script>
 </html>

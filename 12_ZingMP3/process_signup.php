@@ -7,7 +7,7 @@ if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']))
 }
 if($_FILES['image']['size'] > 0) {
     $image = $_FILES['image'];
-    $file_extension = explode('.', $image['name'])[1]; //explode: cắt chuỗi = dấu . thành mảng lấy vị trí thứ 1
+    $file_extension = explode('.', $image['name'])[1]; 
     $file_type = array("jpg", "jpeg", "png");
 
     if(!in_array("$file_extension", $file_type)) {
@@ -22,7 +22,7 @@ if($_FILES['image']['size'] > 0) {
         exit();
     }
 
-    $file_name = 'user_' . time() . '.' . $file_extension; // tránh trùng ảnh
+    $file_name = 'user_' . time() . '.' . $file_extension; 
     $folder = './assets/images/users/';
     $path_file = $folder . $file_name;
     move_uploaded_file($image['tmp_name'], $path_file);

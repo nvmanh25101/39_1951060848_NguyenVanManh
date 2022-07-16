@@ -12,8 +12,12 @@ require_once '../../database/connect.php';
 $sql = "delete from categories where id = '$id'";
 
 mysqli_query($connect, $sql);
-
+$error = mysqli_error($connect);
 mysqli_close($connect);
 
-$_SESSION['success'] = 'Đã xóa thành công';
+if(empty($error)) {
+    $_SESSION['success'] = 'Đã xóa thành công';
+} else {
+    $_SESSION['error'] = 'Đã xảy ra lỗi';
+}
 header('location:index.php');
